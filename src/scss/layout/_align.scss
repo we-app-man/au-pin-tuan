@@ -1,0 +1,50 @@
+// 布局对其
+.align {
+  // 文本对齐
+  &-text {
+    // 居中对齐
+    &-center {
+      text-align: center;
+    }
+    &-right {
+      text-align: right;
+    }
+    &-left {
+      text-align: left;
+    }
+  }
+  &-item {
+    &-center {
+      align-items: center;
+    }
+    &-start {
+      align-items: flex-start;
+    }
+  }
+}
+
+.vertical {
+  &-align {
+    &-middle {
+      vertical-align: middle;
+    }
+  }
+}
+
+.justify {
+  &-start {
+    justify-content: flex-start;
+  }
+  &-end {
+    justify-content: flex-end;
+  }
+  &-between {
+    justify-content: space-between;
+  }
+  &-around {
+    justify-content: space-around;
+  }
+  &-center {
+    justify-content: center;
+  }
+}

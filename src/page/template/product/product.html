@@ -1,0 +1,17 @@
+<template name="product-list">
+<view class="padding-x_10">
+  <view class="position-relative flex-box border-bottom-ddd_1 last-border-{{last}} padding-y_10">
+    <view class="border-ddd_1 w-rpx_156 height-rpx_156 margin-right-rpx_20 bg-placeholder-logo">
+      <image class="w-rpx_156 height-rpx_156" src="{{imgUrlProxy}}{{pro.Cover}}" mode="aspectFit"></image>
+    </view>
+    <view class="flex_3 font-rpx_27 align-item-center flex-box">
+      <view>
+        <view class="padding-left_5 text-clamp_2 font-weight-normal height-rpx-max_72 line-height-rpx_36 font_12 text-clamp_2">{{pro.Name}}</view>
+        <view class="strong padding_5">RMB {{pro.Price}} x {{pro.Quantity}}</view>
+        <view class="padding-x_5 color_666 height-max_18 line-height_18 text-clamp_1">{{pro.Sku}}</view>
+      </view>
+    </view>
+  </view>
+</view>
+</template>
+

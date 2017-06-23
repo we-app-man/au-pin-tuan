@@ -1,0 +1,10 @@
+<!-- 文件 footer.wxml 中 -->
+
+<import src="../template/toast/wetoast.html" />
+<import src="../template/empty/empty.html" />
+<import src="../template/error/error.html" />
+<import src="../template/loading/loading.html" />
+<template is="empty" data="{{emptyShow,emptyTxt,emptyImg,emptyBtn}}" />
+<template is="loading" data="{{loading}}" />
+<template is="error" data="{{error,errorMsg,emptyImg}}" />
+<template is="wetoast" data="{{...__wetoast__}}" />

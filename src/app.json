@@ -1,0 +1,20 @@
+{
+  "pages": [
+    "page/index/index"
+  ],
+  "window": {
+    "navigationBarTextStyle": "white",
+    "navigationBarTitleText": "一键接龙",
+    "navigationBarBackgroundColor": "#222222",
+    "backgroundColor": "#EEEEEE",
+    "backgroundTextStyle": "light",
+    "enablePullDownRefresh": false
+  },
+  "networkTimeout": {
+    "request": 9999,
+    "connectSocket": 9999,
+    "uploadFile": 9999,
+    "downloadFile": 9999
+  },
+  "debug": true
+}
