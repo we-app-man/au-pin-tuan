@@ -1,17 +1,17 @@
 const setting = {
   path: './src/',
   dev: {
-    repUrl: 'http://6city.mu.gg/static/',
+    repUrl: 'https://we-app-man.github.io/au-tuan-s/',
     path: 'dev',
     http: 'http://',
   },
   test: {
-    repUrl: 'http://6city.mu.gg/static/',
+    repUrl: 'https://we-app-man.github.io/au-tuan-s/',
     path: 'test',
     http: 'http://',
   },
   build: {
-    repUrl: 'https://m.6city.com/sp/',
+    repUrl: 'https://we-app-man.github.io/au-tuan-s/',
     path: './build',
     http: 'https://',
   },

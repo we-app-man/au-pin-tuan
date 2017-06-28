@@ -49,17 +49,17 @@ _build = {
       .pipe(sass())
       .on('error', gutil.log)
 
-    .pipe(cru({
-        prefix: _setting.path
-      }, (files) => {
-        sfiles = files
-      }))
-      // .pipe(base64({
-      //   extensions: ['svg', 'png', /\.jpg#datauri$/i],
-      //   maxImageSize: 10000 * 2024, // bytes
-      //   debug: true
-      // }))
-      .pipe(rename((path) => {
+    // .pipe(cru({
+    //     prefix: _setting.path
+    //   }, (files) => {
+    //     sfiles = files
+    //   }))
+    // .pipe(base64({
+    //   extensions: ['svg', 'png', /\.jpg#datauri$/i],
+    //   maxImageSize: 10000 * 2024, // bytes
+    //   debug: true
+    // }))
+    .pipe(rename((path) => {
         path.extname = '.wxss'
       }))
       .pipe(replace(_setting.dev.repUrl, repUrl))
@@ -67,6 +67,7 @@ _build = {
         browsers: ['> 1%'],
         cascade: false
       }))
+      .pipe(replace('img__svg', 'https://we-app-man.github.io/au-tuan-s/svg'))
       .pipe(gulp.dest(buildSrc))
   },
   js: function(file, type = 'dev') {

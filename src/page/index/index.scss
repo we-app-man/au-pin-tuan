@@ -1,1 +1,12 @@
-.index {}
+page {
+  display: flex;
+  flex-direction: column-reverse;
+}
+
+.index-logo {
+  text-align: center;
+}
+
+.index-logo-svg {
+  width: 375rpx;
+}

@@ -1,15 +1,10 @@
-.display {
-  &-block {
-    display: block;
-  }
-  &-inline {
-    display: inline;
-    &-block {
-      display: inline-block;
-    }
-  }
-}
-
 .block {
   display: block
+}
+
+.inline {
+  display: inline;
+  &-block {
+    display: inline-block;
+  }
 }

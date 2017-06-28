@@ -1,11 +1,20 @@
 {
   "pages": [
-    "page/index/index"
+    "page/index/index",
+    "page/initiate/initiate",
+    "page/product/add/add",
+    "page/product/show/show",
+    "page/product/edit/edit",
+    "page/placard/add/add",
+    "page/placard/show/show",
+    "page/placard/edit/edit",
+    "page/help/help",
+    "page/group/index"
   ],
   "window": {
-    "navigationBarTextStyle": "white",
+    "navigationBarTextStyle": "black",
     "navigationBarTitleText": "一键接龙",
-    "navigationBarBackgroundColor": "#222222",
+    "navigationBarBackgroundColor": "#ffffff",
     "backgroundColor": "#EEEEEE",
     "backgroundTextStyle": "light",
     "enablePullDownRefresh": false
