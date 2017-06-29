@@ -19,11 +19,6 @@
   "author": "Julian",
   "license": "ISC",
   "dependencies": {
-    "co": "^4.6.0",
-    "es6-promise": "^4.0.5",
-    "eslint": "^3.19.0",
-    "gulp-clean": "^0.3.2",
-    "regenerator": "^0.9.5",
     "sass-mi": "0.0.1"
   },
   "devDependencies": {
@@ -36,14 +31,9 @@
     "gulp-autoprefixer": "^4.0.0",
     "gulp-babel": "^6.1.2",
     "gulp-base64": "^0.1.3",
-    "gulp-changed": "^2.0.0",
-    "gulp-css-rework-url": "^0.1.2",
-    "gulp-header": "^1.8.8",
-    "gulp-imagemin": "^3.1.1",
+    "gulp-clean": "^0.3.2",
     "gulp-json-editor": "^2.2.1",
     "gulp-minify-css": "^1.2.4",
-    "gulp-notify": "^2.2.0",
-    "gulp-plumber": "^1.1.0",
     "gulp-rename": "^1.2.2",
     "gulp-replace": "^0.5.4",
     "gulp-sass": "^3.0.0",

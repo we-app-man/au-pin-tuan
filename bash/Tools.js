@@ -6,21 +6,9 @@ fs = require('fs');
 
 path = require('path');
 
-// _ = require('lodash');
-
-// crypto = require('crypto');
-
 gulp = require('gulp');
 
 gutil = require('gulp-util');
-
-// rename = require('gulp-rename');
-
-// plumber = require('gulp-plumber');
-
-// Buffer = require('buffer').Buffer;
-
-// Imagemin = require('imagemin');
 
 setting = require('./setting');
 

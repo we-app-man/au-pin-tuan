@@ -11,7 +11,6 @@ import sass from 'gulp-sass'
 import babel from 'gulp-babel'
 import base64 from 'gulp-base64'
 import autoprefixer from 'gulp-autoprefixer'
-import cru from 'gulp-css-rework-url'
 import replace from 'gulp-replace'
 import rename from 'gulp-rename'
 import _Watch from 'gulp-watch'
@@ -48,12 +47,6 @@ _build = {
       })
       .pipe(sass())
       .on('error', gutil.log)
-
-    // .pipe(cru({
-    //     prefix: _setting.path
-    //   }, (files) => {
-    //     sfiles = files
-    //   }))
     // .pipe(base64({
     //   extensions: ['svg', 'png', /\.jpg#datauri$/i],
     //   maxImageSize: 10000 * 2024, // bytes
@@ -113,10 +106,6 @@ _build = {
         }
         return json
       }))
-      // .pipe(jsonEditor({
-      //   'debug': bool
-      // }))
-      // .pipe(replace('"debug": true', rep))
       .pipe(gulp.dest(buildSrc))
   },
   assets: function(file, type = 'dev') {
