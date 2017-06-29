@@ -31,5 +31,23 @@ export default {
       duration: time,
     })
   },
-
+  /**
+   * 微信模态框显示内容
+   * @param {any} content
+   */
+  showModal(content) {
+    wx.showModal({
+      title: '',
+      content,
+      showCancel: false,
+    })
+  },
+  /**
+   * 关闭 toast
+   * @param {any} page
+   */
+  toastClose(page) {
+    const vm = page
+    vm.wetoast.toast()
+  },
 }

@@ -5,7 +5,6 @@
 import HTTP from '../util/http'
 import CONFIG from '../config'
 
-
 export default {
   /**
    * 日志写入
@@ -53,9 +52,6 @@ export default {
     HTTP.post(url, obj)
       .then((res) => {
         console.log(`log++${res}`)
-      }),
-      function(err) {
-        console.log('请求失败')
-      }
+      })
   },
 }

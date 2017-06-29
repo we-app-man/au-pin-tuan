@@ -1,87 +1,81 @@
 // dao 层 公共
 import {
-  Promise
+  Promise,
 } from '../libs/es6-promise'
-import regeneratorRuntime from '../libs/runtime'
-import co from '../libs/co'
-import API from '../util/api'
-import DA from '../util/da'
-import LANG from '../lang/lang'
-import STORAGE from '../util/storage'
-// model
-import PAYMENT from '../model/payment'
-import ADDRESS from '../model/address'
-
+import Config from '../config'
+// stroage
+import Storage from '../util/storage'
 
 export default {
   /**
-   * 微信支付 Base 类
-   * 
-   * @param {any} page 
-   * @param {any} obj 
+   * 微信登陆获取用户信息
+   * @returns
    */
-  paymentWechat(page, obj) {
-    let vm = page
-
+  wxLoginGetUserInfo() {
     return new Promise((resolve, reject) => {
-      co(function*() {
+      // 调用登录接口
+      wx.login({
+        success(response) {
+          const code = response.code
+          wx.getUserInfo({
+            success(resp) {
+              const obj = {
+                code,
+                iv: resp.iv,
+                encryptedData: resp.encryptedData,
+              }
 
-        API.toastLoading(vm)
-
-        let paymentWechat = yield PAYMENT.Wechat(obj)
-
-        if (!API.resData(vm, paymentWechat)) {
-          return
-        }
-
-        console.log(paymentWechat)
-        console.log('进入dao 层 base 类')
-        let msg = ''
-
-        let JsPay = paymentWechat.Data.JsPay
-        if (!JsPay) {
-          msg = LANG.CanNotPay
-
-        } else {
-
-          let wxpayapi = yield API.payment(JsPay)
-
-          if (wxpayapi.errMsg) {
-            msg = LANG.PayFail
-
-          } else {
-
-            msg = LANG.PaySuccess
-          }
-        }
-
-        API.toastTitle(vm, msg)
-
-        resolve(msg)
-
+              resolve(obj)
+            },
+          })
+        },
+        fail(err) {
+          reject(err)
+        },
       })
-
     })
-
   },
   /**
-   * 删除收获地址
-   * 
-   * @param {any} page 
-   * @param {any} e 
+   * AU微信用户一站式登陆
+   * @returns
    */
-  addressDel(page, e) {
-    return new Promise((resolve, reject) => {
-      let vm = page
-      let dataset = e.currentTarget.dataset
-      co(function*() {
+  auLogin() {
+    return new Promise((resolve) => {
+      const wxUserInfo = this.wxLoginGetUserInfo()
 
-        API.toastLoading(vm)
-        let addressMo = yield ADDRESS.Delete(dataset.id)
-        vm.wetoast.toast()
-        resolve(addressMo.Success)
+      wxUserInfo.then((resp) => {
+        wx.request({
+          url: `${Config.ApiHost}api/wx/login`,
+          method: 'POST',
+          data: {
+            code: resp.code,
+            iv: resp.iv,
+            encryptedData: resp.encryptedData,
+          },
+          header: {
+            'content-type': 'application/json',
+          },
+          success(res) {
+            console.log(res.data)
+
+            Storage.set(Storage.userKey, res.data.token)
+
+            resolve(res)
+          },
+          fail(err) {
+            console.log(err)
+            resolve(false)
+          },
+        })
+
+        console.log(resp)
       })
 
+      wxUserInfo.catch((err) => {
+        console.log('err')
+        console.log(err)
+        resolve(false)
+      })
     })
-  }
+  },
 }

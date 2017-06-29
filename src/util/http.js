@@ -14,13 +14,13 @@ const HEADER = {
   'Cache-Control': 'no-cache',
   // 'Content-Type': 'application/x-www-form-urlencode;charset=UTF-8;'
   'Content-Type': 'application/json',
+  'Authorization': 'Bearer ',
 }
 
 
 export default {
   /**
    * 发起 POST 请求
-   *
    * @param {any} url
    * @param {any} [data={}]
    * @returns
@@ -40,7 +40,8 @@ export default {
         return
       }
 
-      data.key = `${key}`
+      HEADER.Authorization = `Bearer ${key}`
+
       wx.request({
         url,
         data,
@@ -70,6 +71,21 @@ export default {
     return new Promise((resolve) => {
       console.log('get')
       console.log(url)
+
+      const key = wx.getStorageSync(STORAGE.userKey)
+        // let key = "123"
+      if (!key) {
+        const obj = {
+          Success: false,
+          Code: -9999,
+          Message: LANG.LoginKeyNotFind,
+        }
+        resolve(obj)
+        return
+      }
+
+      HEADER.Authorization = `Bearer ${key}`
+
       wx.request({
         url,
         data,
@@ -94,12 +110,6 @@ export default {
     if (typeof(res) !== 'object') {
       return
     }
-    // wx.showToast({
-    //     title: data.Message,
-    //     icon: 'loading',
-    //     duration: 2000
-    // })
-
     if (data.Code === -2000) {
       LOGIN.LOGINAll()
 

@@ -1,10 +1,20 @@
-Page({
-  data: {},
-  onLoad(options) {
-    const vm = this
+// controller
+import PlacardController from '../../../controller/placard'
 
+Page({
+  data: {
+    description: '',
   },
-  onShow() {},
+  onLoad() {},
+  onShow() {
+    PlacardController.init(this)
+  },
+  bindTextAreaBlur(e) {
+    PlacardController.bindTextAreaBlur(e)
+  },
+  submit() {
+    PlacardController.submit()
+  },
   /**
    * 监听用户下拉动作
    */
@@ -17,13 +27,10 @@ Page({
    * @returns
    */
   onShareAppMessage() {
-    const vm = this
-    const data = vm.data
-
     return {
-      'title': 'title',
+      'title': '谁是第一个发起者，搬个小板凳赶快上车咯🛵🛵🛵',
       'desc': 'desc',
-      'path': '/page/group/group',
+      'path': '/page/placard/add/add',
     }
   },
   onReady() {},

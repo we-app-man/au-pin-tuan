@@ -4,6 +4,23 @@ Page({
     const vm = this
 
   },
+  tapDetail() {
+    wx.navigateTo({
+      url: '/page/product/show/show',
+    })
+  },
+  tapCopy() {
+    wx.showModal({
+      title: '',
+      content: '复制成功',
+      showCancel: false,
+    })
+
+    return false
+  },
+  handleTap2() {
+    return false
+  },
   onShow() {},
   /**
    * 监听用户下拉动作
@@ -23,7 +40,7 @@ Page({
     return {
       'title': 'title',
       'desc': 'desc',
-      'path': '/page/group/group',
+      'path': '/page/initiate/initiate',
     }
   },
   onReady() {},

@@ -23,7 +23,7 @@ Page({
     return {
       'title': 'title',
       'desc': 'desc',
-      'path': '/page/group/group',
+      'path': '/page/product/show/show',
     }
   },
   onReady() {},
