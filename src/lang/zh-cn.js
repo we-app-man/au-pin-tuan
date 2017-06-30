@@ -12,4 +12,6 @@ export default {
   VersionTooLow: '当前微信版本过低,无法使用该功能,请升级到最新微信版本后重试。',
   ServeError: '服务错误了',
   ServeOutRefresh: '服务器开小差了，请刷新',
+  ShareFriend: '点击右上角分享给更多好友吧',
+  PostOK: '发布成功',
 }

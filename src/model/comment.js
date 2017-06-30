@@ -12,16 +12,16 @@ export default {
    */
   store(obj) {
     return new Promise((resolve) => {
-      const url = `${CONFIG.ApiHost}api/group`
+      const url = `${CONFIG.ApiHost}api/comment`
 
-      const group = HTTP.post(url, obj)
+      const resData = HTTP.post(url, obj)
 
-      group.then((res) => {
+      resData.then((res) => {
         console.log(`store++${res}`)
         resolve(res)
       })
 
-      group.catch((err) => {
+      resData.catch((err) => {
         console.log(`store++${err}`)
         resolve(false)
       })
@@ -34,16 +34,16 @@ export default {
    */
   show(id) {
     return new Promise((resolve) => {
-      const url = `${CONFIG.ApiHost}api/group/${id}`
+      const url = `${CONFIG.ApiHost}api/comment/${id}`
 
-      const group = HTTP.get(url)
+      const resData = HTTP.get(url)
 
-      group.then((res) => {
+      resData.then((res) => {
         console.log(`show++${res}`)
         resolve(res)
       })
 
-      group.catch((err) => {
+      resData.catch((err) => {
         console.log(`show++${err}`)
         resolve(false)
       })

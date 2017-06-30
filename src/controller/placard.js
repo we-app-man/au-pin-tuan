@@ -8,6 +8,8 @@ import Group from '../dao/group'
 import Stack from '../mwx/stack'
 // mgs
 import MSG from '../mwx/msg'
+// controller
+import GoController from './go'
 
 export default {
   init(page) {
@@ -41,6 +43,16 @@ export default {
       description,
       type_id: 1,
     }
-    Group.group(obj)
+
+    co(function* c() {
+      const req = yield Group.group(obj)
+      console.log(req)
+
+      if (req.group) {
+        const id = req.group.id
+        console.log(id)
+        GoController.placardShowShare(id)
+      }
+    })
   },
 }

@@ -35,9 +35,9 @@ export default {
    * 微信模态框显示内容
    * @param {any} content
    */
-  showModal(content) {
+  showModal(content, title = ' ') {
     wx.showModal({
-      title: '',
+      title,
       content,
       showCancel: false,
     })

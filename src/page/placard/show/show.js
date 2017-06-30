@@ -1,10 +1,19 @@
+import Placard from '../../../controller/placardShow'
+
 Page({
   data: {},
   onLoad(options) {
-    const vm = this
-
+    Placard.onLoad(options)
   },
-  onShow() {},
+  onShow() {
+    Placard.init()
+  },
+  bindKeyInput(e) {
+    Placard.bindKeyInput(e)
+  },
+  submit() {
+    Placard.submit()
+  },
   /**
    * 监听用户下拉动作
    */
@@ -17,9 +26,6 @@ Page({
    * @returns
    */
   onShareAppMessage() {
-    const vm = this
-    const data = vm.data
-
     return {
       'title': 'title',
       'desc': 'desc',

@@ -67,7 +67,7 @@ export default {
    * @param {any} data
    * @returns
    */
-  get(url, data) {
+  get(url, data = {}) {
     return new Promise((resolve) => {
       console.log('get')
       console.log(url)
@@ -92,7 +92,7 @@ export default {
         header: HEADER,
         method: REQ_METHOD.GET,
         success(res) {
-          resolve(res)
+          resolve(res.data)
         },
         fail: () => {
           console.log('报错了')

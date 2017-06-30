@@ -1,26 +1,26 @@
 import {
   Promise,
 } from '../libs/es6-promise'
-import Group from '../model/group'
+import Comment from '../model/comment'
 
 export default {
   /**
-   * 发起团信息
+   * 发起接龙信息
    * @returns
    */
-  group(obj) {
+  store(obj) {
     return new Promise((resolve) => {
-      resolve(Group.store(obj))
+      resolve(Comment.store(obj))
     })
   },
   /**
-   * 查询一个团信息
+   * 查询一个跟龙信息
    * @param {any} id
    * @returns
    */
   show(id) {
     return new Promise((resolve) => {
-      resolve(Group.show(id))
+      resolve(Comment.show(id))
     })
   },
 }

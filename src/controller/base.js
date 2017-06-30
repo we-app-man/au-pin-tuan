@@ -14,4 +14,7 @@ export default {
       console.log(userInfo)
     })
   },
+  init() {
+
+  },
 }

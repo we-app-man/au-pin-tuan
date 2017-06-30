@@ -1,4 +1,5 @@
 // 路由管理
 export default {
-  cart: '/page/index/index',
+  index: '/page/index/index',
+  placardShow: '/page/placard/show/show',
 }
