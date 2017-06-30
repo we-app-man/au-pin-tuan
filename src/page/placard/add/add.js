@@ -4,13 +4,23 @@ import PlacardController from '../../../controller/placard'
 Page({
   data: {
     description: '',
+    image: [],
+    imageLoad: true,
+    imageList: [{
+      src: '',
+    }, {
+      src: '',
+    }],
   },
   onLoad() {},
   onShow() {
-    PlacardController.init(this)
+    PlacardController.init()
   },
   bindTextAreaBlur(e) {
     PlacardController.bindTextAreaBlur(e)
+  },
+  bindUpload(e) {
+    PlacardController.bindUpload(e)
   },
   submit() {
     PlacardController.submit()

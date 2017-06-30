@@ -1,27 +1,15 @@
+// controller
+import Initiate from '../../controller/initiate'
+
 Page({
   data: {},
-  onLoad(options) {
-    const vm = this
-
+  onLoad() {},
+  onShow() {
+    Initiate.init()
   },
-  tapDetail() {
-    wx.navigateTo({
-      url: '/page/product/show/show',
-    })
+  tapDetail(e) {
+    Initiate.tapDetail(e)
   },
-  tapCopy() {
-    wx.showModal({
-      title: '',
-      content: '复制成功',
-      showCancel: false,
-    })
-
-    return false
-  },
-  handleTap2() {
-    return false
-  },
-  onShow() {},
   /**
    * 监听用户下拉动作
    */
@@ -34,11 +22,8 @@ Page({
    * @returns
    */
   onShareAppMessage() {
-    const vm = this
-    const data = vm.data
-
     return {
-      'title': 'title',
+      'title': '我发起的，搬个小板凳赶快上车咯🛵🛵🛵',
       'desc': 'desc',
       'path': '/page/initiate/initiate',
     }

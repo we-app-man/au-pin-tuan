@@ -2,6 +2,10 @@ import { Promise } from '../libs/es6-promise'
 import STORAGE from './storage'
 import LOGIN from '../model/login'
 import LANG from '../lang/lang'
+// stack
+import Status from '../controller/status'
+import MSG from '../mwx/msg'
+
 
 const REQ_METHOD = {
   GET: 'GET',
@@ -14,6 +18,12 @@ const HEADER = {
   'Cache-Control': 'no-cache',
   // 'Content-Type': 'application/x-www-form-urlencode;charset=UTF-8;'
   'Content-Type': 'application/json',
+  'Authorization': 'Bearer ',
+}
+
+const HEADERFile = {
+  'Cache-Control': 'no-cache',
+  'Content-Type': 'multipart/form-data',
   'Authorization': 'Bearer ',
 }
 
@@ -53,9 +63,10 @@ export default {
 
           resolve(resData)
         },
-        fail: (res) => {
+        fail: (err) => {
           console.log('请求失败')
-          reject(res)
+          vm.ErrorServe(err)
+          reject(err)
         },
       })
     })
@@ -68,6 +79,7 @@ export default {
    * @returns
    */
   get(url, data = {}) {
+    const vm = this
     return new Promise((resolve) => {
       console.log('get')
       console.log(url)
@@ -94,8 +106,32 @@ export default {
         success(res) {
           resolve(res.data)
         },
-        fail: () => {
+        fail: (err) => {
           console.log('报错了')
+          vm.ErrorServe(err)
+          resolve(false)
+        },
+      })
+    })
+  },
+  file(url, filePath) {
+    return new Promise((resolve) => {
+      const key = wx.getStorageSync(STORAGE.userKey)
+
+      HEADERFile.Authorization = `Bearer ${key}`
+
+      wx.uploadFile({
+        url,
+        filePath,
+        header: HEADERFile,
+        name: 'image',
+        formData: {
+          'user': 'test',
+        },
+        success(res) {
+          const data = res.data
+          console.log(data)
+          resolve(data)
         },
       })
     })
@@ -122,5 +158,10 @@ export default {
         emptyImg: vm.data.emptyImg,
       })
     }
+  },
+  ErrorServe(err) {
+    Status.notfind(true, err)
+    console.log(err)
+    MSG.showModal(err.errMsg, 'serve err')
   },
 }

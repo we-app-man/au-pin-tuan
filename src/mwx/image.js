@@ -9,7 +9,6 @@ import {
 export default {
   /**
    * 从本地相册选择图片或使用相机拍照。
-   *
    * @服务接口返回字段
    * @apiSuccess {string} tempFilePaths  本地文件路径
    *
@@ -24,8 +23,10 @@ export default {
         sourceType: ['album', 'camera'], // 可以指定来源是相册还是相机，默认二者都有
         success(res) {
           // 返回选定照片的本地文件路径列表，tempFilePath可以作为img标签的src属性显示图片
-          const tempFilePaths = res.tempFilePaths
-          resolve(res)
+          resolve(res.tempFilePaths[0])
+        },
+        fail() {
+          resolve(false)
         },
       })
     })

@@ -26,10 +26,13 @@ Page({
    * @returns
    */
   onShareAppMessage() {
+    const data = this.data
+    const title = `${data.group.alias}发布了接龙, 快跟上 🐱‍🐉🐱‍🐉🐱‍🐉🐱‍🐉🐱‍🐉`
+    const desc = `${data.group.description}..`
     return {
-      'title': 'title',
-      'desc': 'desc',
-      'path': '/page/group/group',
+      'title': title,
+      'desc': desc,
+      'path': `/page/placard/show/show?id=${data.id}`,
     }
   },
   onReady() {},

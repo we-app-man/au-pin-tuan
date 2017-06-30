@@ -10,4 +10,16 @@ export default {
   placardShowShare(id) {
     Go.navToOut(`${Route.placardShow}?share=true&id=${id}`)
   },
+  groupType(id, type) {
+    if (type === 1) {
+      this.placardShow(id)
+    }
+  },
+  /**
+   * 打开拼团详细页
+   * @param {any} id
+   */
+  placardShow(id) {
+    Go.navTo(`${Route.placardShow}?id=${id}`)
+  },
 }

@@ -5,6 +5,7 @@ import {
 import Config from '../config'
 // stroage
 import Storage from '../util/storage'
+import MSG from '../mwx/msg'
 
 export default {
   /**
@@ -27,9 +28,19 @@ export default {
 
               resolve(obj)
             },
+            fail(err) {
+              wx.openSetting({
+                success: (res) => {
+                  console.log(res)
+                },
+              })
+
+              reject(err)
+            },
           })
         },
         fail(err) {
+          console.warn('err 拒绝了授权')
           reject(err)
         },
       })
@@ -72,7 +83,7 @@ export default {
       })
 
       wxUserInfo.catch((err) => {
-        console.log('err')
+        console.warn('err 拒绝了授权')
         console.log(err)
         resolve(false)
       })

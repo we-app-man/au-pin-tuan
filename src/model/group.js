@@ -7,6 +7,27 @@ import CONFIG from '../config'
 
 export default {
   /**
+   * Display a listing of the resource.
+   * @returns
+   */
+  index() {
+    return new Promise((resolve) => {
+      const url = `${CONFIG.ApiHost}api/group`
+
+      const group = HTTP.get(url)
+
+      group.then((res) => {
+        console.log(`store++${res}`)
+        resolve(res)
+      })
+
+      group.catch((err) => {
+        console.log(`store++${err}`)
+        resolve(false)
+      })
+    })
+  },
+  /**
    * Store a newly created resource in storage
    * @returns
    */

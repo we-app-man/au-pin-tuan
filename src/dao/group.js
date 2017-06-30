@@ -5,10 +5,19 @@ import Group from '../model/group'
 
 export default {
   /**
+   * 我发起的
+   * @returns
+   */
+  index() {
+    return new Promise((resolve) => {
+      resolve(Group.index())
+    })
+  },
+  /**
    * 发起团信息
    * @returns
    */
-  group(obj) {
+  store(obj) {
     return new Promise((resolve) => {
       resolve(Group.store(obj))
     })

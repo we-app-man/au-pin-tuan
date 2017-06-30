@@ -10,12 +10,14 @@ import Stack from '../mwx/stack'
 import MSG from '../mwx/msg'
 // lang
 import Lang from '../lang/lang'
+import Config from '../config'
 
 export default {
   onLoad(ops) {
     const vm = Stack.page()
     vm.setData({
       id: ops.id,
+      FileHost: Config.FileHost,
     })
     if (ops.share) {
       MSG.showModal(Lang.ShareFriend, Lang.PostOK)
@@ -31,6 +33,7 @@ export default {
       const groupShow = yield Group.show(data.id)
 
       const group = groupShow.group
+      group.image = group.image.split(',')
 
       const comment = groupShow.comment
 
@@ -66,7 +69,7 @@ export default {
     const comment = vm.data.comment
     const id = vm.data.id
 
-    MSG.showModal(comment)
+    // MSG.showModal(comment)
 
     const obj = {
       comment,

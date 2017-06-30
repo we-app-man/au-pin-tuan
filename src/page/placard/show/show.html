@@ -2,7 +2,7 @@
   <!--团长头像-->
   <view class="header-thumb justify-center  text-center flex-box align-item-center">
     <image class="header-thumb-img" mode="aspectFit" src="{{group.avatar}}"></image>
-    <view class="header-thumb-status text-center">{{group.open == 1 ? '接龙中': '已截至'}}</view>
+    <view class="header-thumb-status text-center font_12 padding-y_2">{{group.open == 1 ? '接龙中': '已截至'}}</view>
   </view>
   <!--团长头像 end-->
   <!--团长信息-->
@@ -20,15 +20,11 @@
 <view class="border-top-ddd_2 border-bottom-ddd_2 padding_10">
   <!--团图片-->
   <view class="flex-box margin-bottom_10">
-    <view class="thumb-box">
-      <!--<image class="thumb-img" mode="aspectFit" src="../../../img/mystic.svg"></image>-->
-    </view>
-    <view class="thumb-box">
-      <!--<image class="thumb-img" mode="aspectFit" src="../../../img/mystic.svg"></image>-->
-    </view>
-    <view class="thumb-box">
-      <!--<image class="thumb-img" mode="aspectFit" src="../../../img/mystic.svg"></image>-->
-    </view>
+    <block wx:for="{{group.image}}" wx:key="{{index}}">
+      <view class="thumb-box">
+        <image class="thumb-img" mode="aspectFit" src="{{FileHost}}{{item}}"></image>
+      </view>
+    </block>
   </view>
   <!--团图片 end-->
   <view class="">
@@ -90,3 +86,9 @@
 
 </view>
 <!--提交输入框 end-->
+
+<!--返回首页-->
+<navigator url="/page/index/index" open-type="redirect" hover-class="navigator-hover">
+  <view class="backtrack"></view>
+</navigator>
+<!--返回首页 end-->
