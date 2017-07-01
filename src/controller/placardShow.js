@@ -11,6 +11,8 @@ import MSG from '../mwx/msg'
 // lang
 import Lang from '../lang/lang'
 import Config from '../config'
+// storage
+import Storage from '../util/storage'
 
 export default {
   onLoad(ops) {
@@ -31,9 +33,12 @@ export default {
       yield Dao.auLogin()
 
       const groupShow = yield Group.show(data.id)
-
+      console.log(groupShow.group)
       const group = groupShow.group
-      group.image = group.image.split(',')
+
+      if (group.image) {
+        group.image = group.image.split(',')
+      }
 
       const comment = groupShow.comment
 
@@ -47,10 +52,11 @@ export default {
 
       vm.setData({
         group,
-        comment: !comment ? '+1 😂' : comment.comment,
+        comment: !comment ? '+1 😂 ' : comment.comment,
       })
 
       that.upComment()
+      that.isOpen()
     })
   },
   bindKeyInput(e) {
@@ -99,6 +105,32 @@ export default {
         commentsList,
       })
       console.log(commentsList)
+    })
+  },
+  /**
+   * 是否打开操作开关
+   */
+  isOpen() {
+    const that = this
+    co(function* c() {
+      const userInfo = yield Storage.get(Storage.userInfo)
+      console.log(userInfo)
+      if (userInfo) {
+        console.log('you')
+        that.isOpenAsyn(userInfo)
+      }
+    })
+  },
+  isOpenAsyn(userInfo) {
+    const vm = Stack.page()
+    const data = vm.data
+    const group = data.group
+
+    const headId = group.head_id.toString() || ''
+    const userId = userInfo.id.toString() || ''
+
+    vm.setData({
+      switch: headId === userId,
     })
   },
 }

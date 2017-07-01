@@ -1,21 +1,5 @@
-<view class="flex-box padding-x_10 padding-y_15 margin-bottom_10">
-  <!--团长头像-->
-  <view class="header-thumb justify-center  text-center flex-box align-item-center">
-    <image class="header-thumb-img" mode="aspectFit" src="{{group.avatar}}"></image>
-    <view class="header-thumb-status text-center font_12 padding-y_2">{{group.open == 1 ? '接龙中': '已截至'}}</view>
-  </view>
-  <!--团长头像 end-->
-  <!--团长信息-->
-  <view class="padding-left_10">
-    <view class="strong height_72 border-bottom-ddd_1 flex-box align-item-center">
-      {{group.alias}}
-    </view>
-    <view class="height_27 color-ddd flex-box align-item-end">
-      发起时间: {{group.created_at}}
-    </view>
-  </view>
-  <!--团长信息end-->
-</view>
+<include src="../../template/page/head-info.html" />
+
 <!--团内容信息-->
 <view class="border-top-ddd_2 border-bottom-ddd_2 padding_10">
   <!--团图片-->
@@ -44,7 +28,11 @@
     <!--输入 end -->
     <view class="flex-box padding-top_10">
       <view class="flex-2">
-
+        <block wx:if="{{switch}}">
+            <button type="{{group.open == 1 ? 'warn': 'primary'}}" size="mini" hover-class="button-hover" bindtap="tapOpen">
+              {{group.open == 1 ? '截止': '开启'}}
+            </button>
+        </block>
       </view>
       <view class="">
         <button type="primary" size="mini" hover-class="button-hover" bindtap="submit">接龙</button>
@@ -56,12 +44,12 @@
 
 <view class="border-bottom-ddd_2"></view>
 
-<block wx:if="{{commentsList}}" wx:for="{{commentsList}}">
+<block wx:if="{{commentsList}}" wx:key="index" wx:for="{{commentsList}}">
   <!--报名订单-->
   <view class="flex-box padding_10 border-bottom-ddd_1">
     <!--报名头像-->
     <view class="flex-box w_46">
-      <view class="height_30 w_16 flex-box align-item-center">2</view>
+      <view class="height_30 w_16 flex-box align-item-center">{{item.index}}</view>
       <view class="">
         <image class="order-thumb-img w_30 height_30 bg-color-eee" mode="aspectFit" src="{{item.avatar}}"></image>
       </view>
@@ -81,14 +69,8 @@
   </view>
 </block>
 
-<!--提交输入框-->
-<view class="fixed bottom bg-color-fff">
-
-</view>
-<!--提交输入框 end-->
 
 <!--返回首页-->
-<navigator url="/page/index/index" open-type="redirect" hover-class="navigator-hover">
-  <view class="backtrack"></view>
+<navigator url="/page/index/index" class="backtrack" open-type="redirect" hover-class="navigator-hover">
 </navigator>
 <!--返回首页 end-->

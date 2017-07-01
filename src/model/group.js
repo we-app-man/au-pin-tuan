@@ -61,6 +61,7 @@ export default {
 
       group.then((res) => {
         console.log(`show++${res}`)
+        console.log(res)
         resolve(res)
       })
 

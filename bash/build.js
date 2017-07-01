@@ -60,7 +60,7 @@ _build = {
         browsers: ['> 1%'],
         cascade: false
       }))
-      .pipe(replace('img__svg', 'https://we-app-man.github.io/au-tuan-s/svg'))
+      .pipe(replace('img__svg', 'https://au.anla.io/svg'))
       .pipe(gulp.dest(buildSrc))
   },
   js: function(file, type = 'dev') {

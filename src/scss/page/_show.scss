@@ -13,7 +13,15 @@
     left: 0;
     right: 0;
     color: #FFF;
-    background-color: #2EB52D;
+  }
+}
+
+.bg{
+  &-warn{
+    background-color: #E64340;
+  }
+  &-primary{
+    background-color: #1AAD19;
   }
 }
 

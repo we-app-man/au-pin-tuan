@@ -7,10 +7,10 @@ import Group from '../dao/group'
 import Image from '../dao/image'
 // stack
 import Stack from '../mwx/stack'
-// mgs
-import MSG from '../mwx/msg'
 import WXimage from '../mwx/image'
 import Event from '../mwx/event'
+// msg
+import MSG from '../mwx/msg'
 // controller
 import GoController from './go'
 
@@ -42,6 +42,11 @@ export default {
     const description = vm.data.description
     let image = vm.data.image
       // MSG.showModal(description)
+    
+    if (description.length < 7) {
+      MSG.showModal('多写点描述吧')
+      return
+    }
 
     if (!image.length) {
       image = ''

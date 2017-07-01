@@ -3,6 +3,7 @@ import { Promise } from '../libs/es6-promise'
 
 export default {
   userKey: 'userKey',
+  userInfo: 'userInfo',
   wxUser: 'wxUser',
   wxUserInfo: 'wxUserInfo',
   address: 'address',
@@ -51,7 +52,7 @@ export default {
         fail(res) {
           console.log('storage get error')
           console.log(res)
-          resolve(res)
+          resolve(false)
         },
       })
     })

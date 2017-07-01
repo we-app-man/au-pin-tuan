@@ -1,7 +1,7 @@
 const setting = {
   path: './src/',
   dev: {
-    repUrl: 'https://we-app-man.github.io/au-tuan-s/',
+    repUrl: 'https://au.anla.io/',
     path: 'dev',
     http: 'http://',
   },

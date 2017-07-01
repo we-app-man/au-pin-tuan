@@ -11,6 +11,9 @@ Page({
   bindKeyInput(e) {
     Placard.bindKeyInput(e)
   },
+  tapOpen() {
+
+  },
   submit() {
     Placard.submit()
   },

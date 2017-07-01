@@ -4,6 +4,8 @@ import {
 import HTTP from '../util/http'
 import CONFIG from '../config'
 
+import Storage from '../util/storage'
+
 
 export default {
   /**
@@ -17,12 +19,17 @@ export default {
       const me = HTTP.get(url)
 
       me.then((res) => {
-        console.log(`me++${res}`)
+        console.log(res)
+
+        Storage.set(Storage.userInfo, res)
+
+        console.log('me++')
         resolve(res)
       })
 
       me.catch((err) => {
-        console.log(`me++${err}`)
+        console.warn(err)
+        console.log('me++err')
         resolve(false)
       })
     })

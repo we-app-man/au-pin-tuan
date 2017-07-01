@@ -1,0 +1,20 @@
+<view class="flex-box padding-x_10 padding-y_15 margin-bottom_10">
+  <!--团长头像-->
+  <view class="header-thumb justify-center  text-center flex-box align-item-center">
+    <image class="header-thumb-img" mode="aspectFit" src="{{group.avatar}}"></image>
+    <view class="{{group.open == 1 ? 'bg-primary': 'bg-warn'}} header-thumb-status text-center font_12 padding-y_2">
+        {{group.open == 1 ? '接龙中': '已截至'}}
+    </view>
+  </view>
+  <!--团长头像 end-->
+  <!--团长信息-->
+  <view class="padding-left_10">
+    <view class="strong height_72 border-bottom-ddd_1 flex-box align-item-center">
+      {{group.alias}}
+    </view>
+    <view class="height_27 color-ddd flex-box align-item-end">
+      发起时间: {{group.created_at}}
+    </view>
+  </view>
+  <!--团长信息end-->
+</view>
