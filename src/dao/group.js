@@ -32,4 +32,9 @@ export default {
       resolve(Group.show(id))
     })
   },
+  updateOpen(obj) {
+    return new Promise((resolve) => {
+      resolve(Group.updateOpen(obj))
+    })
+  },
 }

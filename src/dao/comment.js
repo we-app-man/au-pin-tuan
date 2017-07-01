@@ -5,6 +5,15 @@ import Comment from '../model/comment'
 
 export default {
   /**
+   * 我参与的
+   * @returns
+   */
+  index() {
+    return new Promise((resolve) => {
+      resolve(Comment.index())
+    })
+  },
+  /**
    * 发起接龙信息
    * @returns
    */

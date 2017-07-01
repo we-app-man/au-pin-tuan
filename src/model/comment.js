@@ -7,6 +7,28 @@ import CONFIG from '../config'
 
 export default {
   /**
+   * Display a listing of the resource.
+   * @returns
+   */
+  index() {
+    return new Promise((resolve) => {
+      const url = `${CONFIG.ApiHost}api/comment`
+
+      const group = HTTP.get(url)
+
+      group.then((res) => {
+        console.log('index+')
+        console.log(res)
+        resolve(res)
+      })
+
+      group.catch(() => {
+        console.log('index++err')
+        resolve(false)
+      })
+    })
+  },
+  /**
    * Store a newly created resource in storage
    * @returns
    */

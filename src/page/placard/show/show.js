@@ -12,7 +12,10 @@ Page({
     Placard.bindKeyInput(e)
   },
   tapOpen() {
-
+    Placard.tapOpen()
+  },
+  tapImage(e) {
+    Placard.tapImage(e)
   },
   submit() {
     Placard.submit()

@@ -22,8 +22,8 @@ Page({
     const data = vm.data
 
     return {
-      'title': 'title',
-      'desc': 'desc',
+      'title': 'AU 🐱‍🐉 接龙 || 下一个接龙 wang红 团长会是你吗?',
+      'desc': 'AU 🐱‍🐉 接龙',
       'path': '/page/index/index',
     }
   },

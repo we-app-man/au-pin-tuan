@@ -2,6 +2,7 @@
   "pages": [
     "page/index/index",
     "page/initiate/initiate",
+    "page/comment/comment",
     "page/product/add/add",
     "page/product/show/show",
     "page/product/edit/edit",

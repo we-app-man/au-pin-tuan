@@ -25,6 +25,17 @@
   }
 }
 
+.status{
+  &-warn{
+    color: #E64340;
+    border: 1px solid #E64340;
+  }
+  &-primary{
+    color: #1AAD19;
+    border: 1px solid #1AAD19;
+  }
+}
+
 .thumb-box {
   height: 100px;
   width: 100px;
@@ -48,7 +59,13 @@
   width: 60px;
   height: 60px;
   background: url("img__svg/pokestop.svg") no-repeat center center;
+}
+
+.anima-feat{
   animation: 0.55s linear 0s alternate none 2 featuresicon;
+  &-loading{
+    animation: 0.55s linear 0s alternate none infinite featuresicon;
+  }
 }
 
 @keyframes featuresicon {

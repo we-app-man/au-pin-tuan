@@ -2,7 +2,7 @@ import regeneratorRuntime from '../libs/runtime'
 import co from '../libs/co'
 // dao
 import Dao from '../dao/base'
-import Group from '../dao/group'
+import Comment from '../dao/comment'
 // stack
 import Stack from '../mwx/stack'
 // mgs
@@ -16,6 +16,7 @@ import Status from './status'
 export default {
   init() {
     const vm = Stack.page()
+    const that = this
     console.log(vm.data)
 
     Status.loading(true)
@@ -23,16 +24,16 @@ export default {
     co(function* c() {
       yield Dao.auLogin()
 
-      const groupIndex = yield Group.index()
+      const commentIndex = yield Comment.index()
 
       Status.loading(false)
 
-      const groups = groupIndex.group
+      const groups = that.recoverGroup(commentIndex.comments)
 
       vm.setData({
         groups,
       })
-      console.log(groupIndex)
+      console.log(commentIndex)
 
       if (!groups.length) {
         Status.notfind(true)
@@ -50,5 +51,16 @@ export default {
 
     Go.groupType(id, type)
     console.log(type)
+  },
+  recoverGroup(comments) {
+    const len = comments.length
+    let i
+    const group = []
+    for (i = 0; i < len; i += 1) {
+      const item = comments[i]
+
+      group.push(item.group)
+    }
+    return group
   },
 }

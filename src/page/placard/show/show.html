@@ -5,8 +5,8 @@
   <!--团图片-->
   <view class="flex-box margin-bottom_10">
     <block wx:for="{{group.image}}" wx:key="{{index}}">
-      <view class="thumb-box">
-        <image class="thumb-img" mode="aspectFit" src="{{FileHost}}{{item}}"></image>
+      <view class="thumb-box" bindtap="tapImage" data-index="{{index}}">
+        <image class="thumb-img" mode="aspectFit" src="{{item}}"></image>
       </view>
     </block>
   </view>
@@ -71,6 +71,6 @@
 
 
 <!--返回首页-->
-<navigator url="/page/index/index" class="backtrack" open-type="redirect" hover-class="navigator-hover">
+<navigator url="/page/index/index" class="backtrack anima-feat{{loading ? '-loading' : ''}}" open-type="redirect" hover-class="navigator-hover">
 </navigator>
 <!--返回首页 end-->

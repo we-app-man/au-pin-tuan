@@ -71,4 +71,22 @@ export default {
       })
     })
   },
+  updateOpen(obj) {
+    return new Promise((resolve) => {
+      const url = `${CONFIG.ApiHost}api/group/open/${obj.id}`
+
+      const group = HTTP.post(url, obj)
+
+      group.then((res) => {
+        console.log('updateOpen++')
+        console.log(res)
+        resolve(res)
+      })
+
+      group.catch(() => {
+        console.log('updateOpen++err')
+        resolve(false)
+      })
+    })
+  },
 }

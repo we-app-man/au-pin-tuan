@@ -13,6 +13,11 @@ import Lang from '../lang/lang'
 import Config from '../config'
 // storage
 import Storage from '../util/storage'
+// image
+import Image from '../mwx/image'
+import Event from '../mwx/event'
+// status
+import Status from './status'
 
 export default {
   onLoad(ops) {
@@ -29,15 +34,23 @@ export default {
     const vm = Stack.page()
     const data = vm.data
     const that = this
+
+    Status.loading(true)
+
     co(function* c() {
       yield Dao.auLogin()
 
       const groupShow = yield Group.show(data.id)
+
+      Status.loading(false)
+
       console.log(groupShow.group)
       const group = groupShow.group
 
       if (group.image) {
         group.image = group.image.split(',')
+
+        group.image = that.imageAddHost(group.image)
       }
 
       const comment = groupShow.comment
@@ -89,6 +102,35 @@ export default {
       that.upComment()
     })
   },
+  tapImage(e) {
+    const vm = Stack.page()
+    const images = vm.data.group.image || []
+    const index = Event.dataset(e, 'index')
+    console.log(images)
+    Image.previewImage(images[index], images)
+  },
+  /**
+   * 修改团状态 open
+   */
+  tapOpen() {
+    const vm = Stack.page()
+    const data = vm.data
+    const group = data.group
+    /* eslint no-unused-expressions: "error" */
+    if (group.open === 1) {
+      group.open = 2
+    } else {
+      group.open = 1
+    }
+
+    vm.setData({
+      group,
+    })
+
+    co(function* c() {
+      yield Group.updateOpen(group)
+    })
+  },
   /**
    * 更新接龙信息
    */
@@ -132,5 +174,18 @@ export default {
     vm.setData({
       switch: headId === userId,
     })
+  },
+  imageAddHost(arr) {
+    const len = arr.length
+    const fileHost = Config.FileHost
+    console.log(arr)
+    const arrNew = []
+    let i
+    for (i = 0; i < len; i += 1) {
+      const item = arr[i]
+      arrNew.push(fileHost + item)
+    }
+
+    return arrNew
   },
 }
