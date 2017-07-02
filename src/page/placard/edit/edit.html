@@ -1,3 +1,21 @@
-<view class="">
-  edit
+<view class="padding_10">
+  <view class="font_16 color_000 margin-bottom_10">
+    编辑报名信息，分享到群，愉快的接龙吧！
+  </view>
+  <view class="margin-bottom_10">
+    <textarea bindblur="bindTextAreaBlur" value="{{description}}" class="border-ddd_1 padding_6 w-b_100 border-box bg-color-eee" placeholder="举个栗子：今晚8点，西在北路公园集合，野跑。不想gua 掉的 赶紧接龙一起锻炼" auto-focus />
+  </view>
+  <view class="flex-box">
+    <block wx:for="{{imageList}}" wx:key="index">
+      <view class="thumb-box" bindtap="bindUpload" data-id="{{index}}">
+        <image class="thumb-img" mode="aspectFill" src="{{item.src}}"></image>
+      </view>
+    </block>
+  </view>
 </view>
+
+<!--发起接龙按钮-->
+<view class="fixed bottom">
+  <button type="primary" bindtap="submit" size="default" hover-class="button-hover"> 发起接龙 </button>
+</view>
+<!--发起接龙按钮 end-->

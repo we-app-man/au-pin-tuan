@@ -71,6 +71,46 @@ export default {
       })
     })
   },
+  update(obj) {
+    return new Promise((resolve) => {
+      const url = `${CONFIG.ApiHost}api/group/update/${obj.id}`
+
+      const group = HTTP.post(url, obj)
+
+      group.then((res) => {
+        console.log(`update++${res}`)
+        resolve(res)
+      })
+
+      group.catch((err) => {
+        console.log(`update++${err}`)
+        resolve(false)
+      })
+    })
+  },
+  /**
+   * Display the specified resource.
+   * @param {any} id
+   * @returns
+   */
+  edit(id) {
+    return new Promise((resolve) => {
+      const url = `${CONFIG.ApiHost}api/group/edit/${id}`
+
+      const group = HTTP.get(url)
+
+      group.then((res) => {
+        console.log(`show++${res}`)
+        console.log(res)
+        resolve(res)
+      })
+
+      group.catch((err) => {
+        console.log(`show++${err}`)
+        resolve(false)
+      })
+    })
+  },
   updateOpen(obj) {
     return new Promise((resolve) => {
       const url = `${CONFIG.ApiHost}api/group/open/${obj.id}`
@@ -85,6 +125,24 @@ export default {
 
       group.catch(() => {
         console.log('updateOpen++err')
+        resolve(false)
+      })
+    })
+  },
+  destroy(id) {
+    return new Promise((resolve) => {
+      const url = `${CONFIG.ApiHost}api/group/del/${id}`
+
+      const group = HTTP.post(url)
+
+      group.then((res) => {
+        console.log('destroy++')
+        console.log(res)
+        resolve(res)
+      })
+
+      group.catch(() => {
+        console.log('destroy++err')
         resolve(false)
       })
     })

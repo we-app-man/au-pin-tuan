@@ -18,6 +18,10 @@ import Image from '../mwx/image'
 import Event from '../mwx/event'
 // status
 import Status from './status'
+// go
+import GoController from './go'
+// fc
+import FnGroup from '../fn/group'
 
 export default {
   onLoad(ops) {
@@ -44,17 +48,11 @@ export default {
 
       Status.loading(false)
 
-      console.log(groupShow.group)
       const group = groupShow.group
 
-      if (group.image) {
-        group.image = group.image.split(',')
-
-        group.image = that.imageAddHost(group.image)
-      }
-
+      FnGroup.setGroup(group)
+      
       const comment = groupShow.comment
-
 
       console.log(groupShow.group)
 
@@ -64,7 +62,6 @@ export default {
       }
 
       vm.setData({
-        group,
         comment: !comment ? '+1 😂 ' : comment.comment,
       })
 
@@ -131,6 +128,12 @@ export default {
       yield Group.updateOpen(group)
     })
   },
+  tapEdit() {
+    const vm = Stack.page()
+    const data = vm.data
+    const group = data.group
+    GoController.groupEdit(group.id, group.type_id)
+  },
   /**
    * 更新接龙信息
    */
@@ -175,17 +178,5 @@ export default {
       switch: headId === userId,
     })
   },
-  imageAddHost(arr) {
-    const len = arr.length
-    const fileHost = Config.FileHost
-    console.log(arr)
-    const arrNew = []
-    let i
-    for (i = 0; i < len; i += 1) {
-      const item = arr[i]
-      arrNew.push(fileHost + item)
-    }
-
-    return arrNew
-  },
+  
 }

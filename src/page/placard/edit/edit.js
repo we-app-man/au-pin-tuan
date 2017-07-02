@@ -1,30 +1,37 @@
-Page({
-  data: {},
-  onLoad(options) {
-    const vm = this
+// controller
+import PlacardController from '../../../controller/placardEdit'
 
+Page({
+  data: {
+    description: '',
+    image: [],
+    imageLoad: true,
+    imageList: [{
+      src: '',
+    }, {
+      src: '',
+    }],
   },
-  onShow() {},
+  onLoad(options) {
+    PlacardController.onLoad(options)
+  },
+  onShow() {
+    PlacardController.init()
+  },
+  bindTextAreaBlur(e) {
+    PlacardController.bindTextAreaBlur(e)
+  },
+  bindUpload(e) {
+    PlacardController.bindUpload(e)
+  },
+  submit() {
+    PlacardController.submit()
+  },
   /**
    * 监听用户下拉动作
    */
   onPullDownRefresh() {
     wx.stopPullDownRefresh()
-  },
-  /**
-   * 分享
-   * @param {any} page
-   * @returns
-   */
-  onShareAppMessage() {
-    const vm = this
-    const data = vm.data
-
-    return {
-      'title': 'title',
-      'desc': 'desc',
-      'path': '/page/group/group',
-    }
   },
   onReady() {},
   onHide() {},

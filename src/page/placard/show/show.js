@@ -14,6 +14,9 @@ Page({
   tapOpen() {
     Placard.tapOpen()
   },
+  tapEdit() {
+    Placard.tapEdit()
+  },
   tapImage(e) {
     Placard.tapImage(e)
   },

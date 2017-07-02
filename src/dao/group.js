@@ -23,6 +23,25 @@ export default {
     })
   },
   /**
+   * 更新团信息
+   * @returns
+   */
+  update(obj) {
+    return new Promise((resolve) => {
+      resolve(Group.update(obj))
+    })
+  },
+  /**
+   * 编辑一个团信息
+   * @param {any} id
+   * @returns
+   */
+  edit(id) {
+    return new Promise((resolve) => {
+      resolve(Group.edit(id))
+    })
+  },
+  /**
    * 查询一个团信息
    * @param {any} id
    * @returns
@@ -30,6 +49,16 @@ export default {
   show(id) {
     return new Promise((resolve) => {
       resolve(Group.show(id))
+    })
+  },
+  /**
+   * 删除一个团信息
+   * @param {any} id
+   * @returns
+   */
+  destroy(id) {
+    return new Promise((resolve) => {
+      resolve(Group.destroy(id))
     })
   },
   updateOpen(obj) {

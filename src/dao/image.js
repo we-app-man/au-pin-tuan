@@ -14,4 +14,9 @@ export default {
       resolve(Image.store(filepath))
     })
   },
+  destroy(obj) {
+    return new Promise((resolve) => {
+      resolve(Image.destroy(obj))
+    })
+  },
 }

@@ -10,6 +10,10 @@ Page({
   tapDetail(e) {
     Initiate.tapDetail(e)
   },
+  tapDel(e) {
+    Initiate.tapDel(e)
+  },
+  handleTap2() {},
   /**
    * 监听用户下拉动作
    */

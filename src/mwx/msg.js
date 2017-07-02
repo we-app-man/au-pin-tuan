@@ -43,6 +43,25 @@ export default {
     })
   },
   /**
+   * 微信模态框显示内容 是否执行操作
+   * @param {any} content
+   */
+  showModalCancel(content, title = '', cb) {
+    wx.showModal({
+      title,
+      content,
+      success(res) {
+        if (res.confirm) {
+          console.log('用户点击确定')
+          cb(true)
+        } else if (res.cancel) {
+          console.log('用户点击取消')
+          cb(false)
+        }
+      },
+    })
+  },
+  /**
    * 关闭 toast
    * @param {any} page
    */

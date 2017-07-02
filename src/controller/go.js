@@ -15,11 +15,23 @@ export default {
       this.placardShow(id)
     }
   },
+  groupEdit(id, type) {
+    if (type === 1) {
+      this.placardEdit(id)
+    }
+  },
   /**
    * 打开拼团详细页
    * @param {any} id
    */
   placardShow(id) {
     Go.navTo(`${Route.placardShow}?id=${id}`)
+  },
+  /**
+   * 编辑拼团详细页
+   * @param {any} id
+   */
+  placardEdit(id) {
+    Go.navTo(`${Route.placardEdit}?id=${id}`)
   },
 }
