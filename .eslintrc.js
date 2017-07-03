@@ -9,7 +9,7 @@ module.exports = {
     "es6": true,
   },
   "rules": {
-    "linebreak-style": ["error", "windows"],
+    "linebreak-style": 0,
     // "no-unused-vars": ["error", { "vars": "regeneratorRuntime", "args": "after-used" }],
     // "generator-star-spacing": ["error", "after"],
     "generator-star-spacing": ["error", { "before": false, "after": true }],
