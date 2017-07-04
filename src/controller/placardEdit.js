@@ -13,6 +13,8 @@ import MSG from '../mwx/msg'
 // controller
 import GoController from './go'
 import FnGroup from '../fn/group'
+// set
+import Set from '../set/group'
 
 
 export default {
@@ -32,7 +34,7 @@ export default {
 
       const groupEdit = yield Group.edit(data.id)
       const group = groupEdit.group
-      FnGroup.setGroup(group)
+      Set.Group(group)
       console.log(group)
     })
   },
@@ -49,7 +51,7 @@ export default {
     const id = vm.data.group.id
     let image = vm.data.image
       // MSG.showModal(description)
-    
+
     if (description.length < 7) {
       MSG.showModal('多写点描述吧')
       return

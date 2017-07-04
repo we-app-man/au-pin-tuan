@@ -20,8 +20,8 @@ import Event from '../mwx/event'
 import Status from './status'
 // go
 import GoController from './go'
-// fc
-import FnGroup from '../fn/group'
+// set
+import Set from '../set/group'
 
 export default {
   onLoad(ops) {
@@ -50,8 +50,8 @@ export default {
 
       const group = groupShow.group
 
-      FnGroup.setGroup(group)
-      
+      Set.Group(group)
+
       const comment = groupShow.comment
 
       console.log(groupShow.group)
@@ -113,7 +113,7 @@ export default {
     const vm = Stack.page()
     const data = vm.data
     const group = data.group
-    /* eslint no-unused-expressions: "error" */
+      /* eslint no-unused-expressions: "error" */
     if (group.open === 1) {
       group.open = 2
     } else {
@@ -178,5 +178,5 @@ export default {
       switch: headId === userId,
     })
   },
-  
+
 }

@@ -1,17 +1,15 @@
 import { Promise } from '../libs/es6-promise'
 
-
 export default {
   userKey: 'userKey',
+  userkeyTime: 'userkeyTime',
   userInfo: 'userInfo',
   wxUser: 'wxUser',
   wxUserInfo: 'wxUserInfo',
   address: 'address',
-  packages: 'packages',
   telphone: 'telphone',
   /**
    * 将数据存储在本地缓存中指定的 key 中，会覆盖掉原来该 key 对应的内容， 内置 Promise 对象
-   *
    * @param {any} key
    * @param {any} val
    * @returns
@@ -36,7 +34,6 @@ export default {
   },
   /**
    * 从本地缓存中异步获取指定 key 对应的内容。 内置 Promise 对象
-   *
    * @param {any} key
    * @returns
    */
@@ -58,8 +55,7 @@ export default {
     })
   },
   /**
-   * 从本地缓存中异步移除指定 key 。
-   *
+   * 从本地缓存中异步移除指定 key.
    * @param {any} key
    * @returns
    */

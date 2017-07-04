@@ -1,16 +1,16 @@
 // stack
 import Stack from '../mwx/stack'
-import FnImage from './image'
+import FnImage from '../fn/image'
 import Config from '../config'
 
 export default {
-  setGroup(data) {
+  Group(data) {
     const vm = Stack.page()
     const group = data
     const that = this
     if (group.image) {
       group.image = group.image.split(',')
-      that.setImageList(group.image)
+      that.ImageList(group.image)
       group.image = FnImage.AddHost(group.image)
     }
 
@@ -19,7 +19,7 @@ export default {
       description: group.description,
     })
   },
-  setImageList(arr) {
+  ImageList(arr) {
     const vm = Stack.page()
     const len = arr.length
     const image = []
@@ -33,7 +33,7 @@ export default {
       image.push(item)
       imageList.push(obj)
     }
-    
+
     vm.setData({
       image,
       imageList,
