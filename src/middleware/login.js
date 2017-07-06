@@ -30,8 +30,10 @@ export default {
           },
           success(res) {
             console.log(res.data)
+            const nowTime = new Date().getTime()
 
             Storage.set(Storage.userKey, res.data.token)
+            Storage.set(Storage.userkeyTime, nowTime)
 
             resolve(res)
           },

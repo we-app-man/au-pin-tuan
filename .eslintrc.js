@@ -20,6 +20,7 @@ module.exports = {
     "semi": ["error", "never"],
     "no-extra-semi": 0,
     "no-new": 0,
+    "no-control-regex": 0,
     "no-unused-vars": ["error", { "varsIgnorePattern": "regeneratorRuntime" }],
     "eol-last": ["error", "never"]
   },

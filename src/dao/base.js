@@ -7,6 +7,7 @@ import Storage from '../util/storage'
 import Login from '../middleware/login'
 // Env
 import Env from '../env'
+import Print from '../fn/print'
 
 export default {
   /**
@@ -15,9 +16,19 @@ export default {
    */
   auLogin() {
     return new Promise((resolve) => {
-      const ttl = Env.ttl
+      const ttl = Env.ttl * 1000 * 60
       const keyTime = Storage.get(Storage.userkeyTime)
-      const nowTime = new Date().getTime()
+
+      keyTime.then((val) => {
+        const nowTime = new Date().getTime()
+        const distance = nowTime - val
+        if (distance > ttl) {
+          resolve(Login.auth())
+        } else {
+          Print.Warn('不用登陆')
+          resolve(false)
+        }
+      })
     })
   },
 }

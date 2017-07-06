@@ -4,7 +4,7 @@ import LOGIN from '../model/login'
 import LANG from '../lang/lang'
 // stack
 import Status from '../controller/status'
-import MSG from '../mwx/msg'
+// import MSG from '../mwx/msg'
 
 
 const REQ_METHOD = {
@@ -16,7 +16,6 @@ const REQ_METHOD = {
 
 const HEADER = {
   'Cache-Control': 'no-cache',
-  // 'Content-Type': 'application/x-www-form-urlencode;charset=UTF-8;'
   'Content-Type': 'application/json',
   'Authorization': 'Bearer ',
 }
@@ -161,7 +160,6 @@ export default {
   },
   ErrorServe(err) {
     Status.notfind(true, err)
-    console.log(err)
-    MSG.showModal(err.errMsg, 'serve err')
+      // MSG.showModal(err.errMsg, '网络发生了故障,请稍后再试')
   },
 }

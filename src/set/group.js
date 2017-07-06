@@ -2,21 +2,35 @@
 import Stack from '../mwx/stack'
 import FnImage from '../fn/image'
 import Config from '../config'
+import FnString from '../util/string'
 
 export default {
   Group(data) {
     const vm = Stack.page()
     const group = data
+    const description = group.description
+    let desc = group.description
     const that = this
+    let descMore = false
+    let descBtn = false
     if (group.image) {
       group.image = group.image.split(',')
       that.ImageList(group.image)
       group.image = FnImage.AddHost(group.image)
     }
 
+    if (description.length > 90) {
+      desc = FnString.subString(description, 76, '...')
+      descMore = true
+      descBtn = true
+    }
+
     vm.setData({
       group,
-      description: group.description,
+      description,
+      descMore,
+      descBtn,
+      desc,
     })
   },
   ImageList(arr) {

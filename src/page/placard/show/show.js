@@ -14,6 +14,9 @@ Page({
   tapOpen() {
     Placard.tapOpen()
   },
+  tapDesc() {
+    Placard.tapDesc()
+  },
   tapEdit() {
     Placard.tapEdit()
   },
@@ -36,7 +39,7 @@ Page({
    */
   onShareAppMessage() {
     const data = this.data
-    const title = `${data.group.alias}发布了接龙, 快跟上 🐱‍🐉🐱‍🐉🐱‍🐉🐱‍🐉🐱‍🐉`
+    const title = '澳洲群一键接龙'
     const desc = `${data.group.description}..`
     return {
       'title': title,

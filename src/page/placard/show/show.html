@@ -2,8 +2,23 @@
 
 <!--团内容信息-->
 <view class="border-top-ddd_2 border-bottom-ddd_2 padding_10">
+
+  <!--描述-->
+  <!--有更多-->
+  <view wx:if="{{descBtn}}" class="margin-bottom_10" bindtap="tapDesc">
+    {{desc}} <text class="more-desc-btn">显示更多</text>
+  </view>
+  <!--有更多 end-->
+  <view wx:if="{{!descBtn}}" class="margin-bottom_10" bindtap="tapDesc">
+    {{description}}
+  </view>
+  <!--<view class="">
+    显示更多
+  </view>-->
+  <!--描述 end-->
+
   <!--团图片-->
-  <view class="flex-box margin-bottom_10">
+  <view class="flex-box">
     <block wx:for="{{group.image}}" wx:key="{{index}}">
       <view class="thumb-box" bindtap="tapImage" data-index="{{index}}">
         <image class="thumb-img" mode="aspectFill" src="{{item}}"></image>
@@ -11,9 +26,6 @@
     </block>
   </view>
   <!--团图片 end-->
-  <view class="">
-    {{group.description}}
-  </view>
 </view>
 <!--团内容信息 end-->
 
@@ -29,10 +41,10 @@
     <view class="flex-box padding-top_10">
       <view class="flex-2">
         <block wx:if="{{switch}}">
-            <button type="{{group.open == 1 ? 'warn': 'primary'}}" size="mini" hover-class="button-hover" bindtap="tapOpen">
+          <button type="{{group.open == 1 ? 'warn': 'primary'}}" size="mini" hover-class="button-hover" bindtap="tapOpen">
               {{group.open == 1 ? '截止': '开启'}}
             </button>
-            <button bindtap="tapEdit" class="margin-left_10" type="defaule" size="mini" hover-class="button-hover" >
+          <button bindtap="tapEdit" class="margin-left_10" type="defaule" size="mini" hover-class="button-hover">
                 编辑
             </button>
         </block>
@@ -72,7 +84,7 @@
   </view>
 </block>
 
-
+<view class="backtrack-plan"></view>
 <!--返回首页-->
 <navigator url="/page/index/index" class="backtrack anima-feat{{loading ? '-loading' : ''}}" open-type="redirect" hover-class="navigator-hover">
 </navigator>

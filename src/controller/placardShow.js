@@ -128,6 +128,18 @@ export default {
       yield Group.updateOpen(group)
     })
   },
+  /**
+   * 显示更多描述
+   */
+  tapDesc() {
+    const vm = Stack.page()
+    const data = vm.data
+    if (data.descMore) {
+      vm.setData({
+        descBtn: !data.descBtn,
+      })
+    }
+  },
   tapEdit() {
     const vm = Stack.page()
     const data = vm.data
