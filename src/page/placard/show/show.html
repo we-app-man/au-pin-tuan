@@ -18,7 +18,7 @@
   <!--描述 end-->
 
   <!--团图片-->
-  <view class="flex-box">
+  <view class="flex-box overflow-y">
     <block wx:for="{{group.image}}" wx:key="{{index}}">
       <view class="thumb-box" bindtap="tapImage" data-index="{{index}}">
         <image class="thumb-img" mode="aspectFill" src="{{item}}"></image>
