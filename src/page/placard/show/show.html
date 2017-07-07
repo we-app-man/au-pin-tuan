@@ -77,12 +77,31 @@
     </view>
     <!--订单信息 end-->
     <!--订单时间-->
-    <view class="color-ddd font_12">
-      {{item.created_at}}
+    <view class="font_12 text-right">
+      <view class="color-ddd ">
+        {{item.created_at}}
+      </view>
+      <block wx:if="{{switch}}">
+        <view class="padding-top_10">
+          <button type="warn" size="mini" data-index="{{index}}" data-alias="{{item.alias}}" data-id="{{item.id}}" hover-class="button-hover" bindtap="tabCommentDel">删除</button>
+        </view>
+      </block>
     </view>
     <!--订单时间 end-->
   </view>
 </block>
+
+<!--scsan code-->
+<view class="text-center padding-top_20">
+  <view class="padding_10">
+    本团专属码 🐴
+  </view>
+  <image bindtap="tapCodeImage" class="loading-bg code-img" mode="aspectFill" src="{{codeSrc}}"></image>
+  <view class="">
+    点击保存
+  </view>
+</view>
+<!--scsan code end-->
 
 <view class="backtrack-plan"></view>
 <!--返回首页-->

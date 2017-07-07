@@ -22,6 +22,11 @@ import Status from './status'
 import GoController from './go'
 // set
 import Set from '../set/group'
+import Print from '../fn/print'
+// provider
+import GroupProvider from '../provider/group'
+// set
+import SetComment from '../set/comment'
 
 export default {
   onLoad(ops) {
@@ -54,10 +59,10 @@ export default {
 
       const comment = groupShow.comment
 
-      console.log(groupShow.group)
+      Print.Log(groupShow.group)
 
       if (!group) {
-        console.log('group 错误了')
+        Print.Log('group 错误了')
         return
       }
 
@@ -74,7 +79,7 @@ export default {
     vm.setData({
       comment: e.detail.value,
     })
-    console.log(vm)
+    Print.Log(vm)
   },
   /**
    * 提交接龙
@@ -94,7 +99,7 @@ export default {
 
     co(function* c() {
       const req = yield Comment.store(obj)
-      console.log(req)
+      Print.Log(req)
 
       that.upComment()
     })
@@ -103,8 +108,13 @@ export default {
     const vm = Stack.page()
     const images = vm.data.group.image || []
     const index = Event.dataset(e, 'index')
-    console.log(images)
+    Print.Log(images)
     Image.previewImage(images[index], images)
+  },
+  tapCodeImage() {
+    const vm = Stack.page()
+    const codeSrc = vm.data.codeSrc
+    Image.previewImage(codeSrc, [codeSrc])
   },
   /**
    * 修改团状态 open
@@ -161,8 +171,27 @@ export default {
       vm.setData({
         commentsList,
       })
-      console.log(commentsList)
+      Print.Log(commentsList)
     })
+  },
+  /**
+   * 删除跟团信息
+   * @param {any} e
+   */
+  tabCommentDel(e) {
+    const id = Event.dataset(e, 'id')
+    const alias = Event.dataset(e, 'alias')
+    const index = Event.dataset(e, 'index')
+    const content = `确定要删除 ${alias} 的信息吗?`
+    const title = '删除确认'
+    MSG.showModalCancel(content, title, (bool) => {
+      if (bool) {
+        SetComment.commentDel(index)
+        GroupProvider.commentDel(id)
+      }
+    })
+
+    Print.Log(id)
   },
   /**
    * 是否打开操作开关
@@ -171,9 +200,9 @@ export default {
     const that = this
     co(function* c() {
       const userInfo = yield Storage.get(Storage.userInfo)
-      console.log(userInfo)
+      Print.Log(userInfo)
       if (userInfo) {
-        console.log('you')
+        Print.Log('you')
         that.isOpenAsyn(userInfo)
       }
     })

@@ -23,6 +23,12 @@ Page({
   tapImage(e) {
     Placard.tapImage(e)
   },
+  tapCodeImage() {
+    Placard.tapCodeImage()
+  },
+  tabCommentDel(e) {
+    Placard.tabCommentDel(e)
+  },
   submit() {
     Placard.submit()
   },

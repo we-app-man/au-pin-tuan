@@ -42,7 +42,7 @@ export default {
     const description = vm.data.description
     let image = vm.data.image
       // MSG.showModal(description)
-    
+
     if (description.length < 7) {
       MSG.showModal('多写点描述吧')
       return
@@ -102,7 +102,7 @@ export default {
 
       imageList[imgIndex].src = imgPath.src
 
-      image.push(imgPath.path)
+      image[imgIndex] = imgPath.path
 
       vm.setData({
         imageList,

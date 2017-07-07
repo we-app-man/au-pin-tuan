@@ -32,4 +32,14 @@ export default {
       resolve(Comment.show(id))
     })
   },
+  /**
+   * 删除一个跟龙信息
+   * @param {any} id
+   * @returns
+   */
+  destroy(id) {
+    return new Promise((resolve) => {
+      resolve(Comment.destroy(id))
+    })
+  },
 }

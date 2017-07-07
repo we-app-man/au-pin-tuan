@@ -71,4 +71,26 @@ export default {
       })
     })
   },
+  /**
+   * 删除留言.
+   * @param {any} id
+   * @returns
+   */
+  destroy(id) {
+    return new Promise((resolve) => {
+      const url = `${CONFIG.ApiHost}api/comment/del/${id}`
+
+      const resData = HTTP.post(url)
+
+      resData.then((res) => {
+        console.log(`destroy++${res}`)
+        resolve(res)
+      })
+
+      resData.catch((err) => {
+        console.log(`destroy++${err}`)
+        resolve(false)
+      })
+    })
+  },
 }

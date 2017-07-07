@@ -3,6 +3,8 @@ import Stack from '../mwx/stack'
 import FnImage from '../fn/image'
 import Config from '../config'
 import FnString from '../util/string'
+// env
+import Env from '../env'
 
 export default {
   Group(data) {
@@ -25,12 +27,15 @@ export default {
       descBtn = true
     }
 
+    const codeSrc = Env.codeApi + group.id
+
     vm.setData({
       group,
       description,
       descMore,
       descBtn,
       desc,
+      codeSrc,
     })
   },
   ImageList(arr) {
