@@ -58,4 +58,22 @@ export default {
       imageList,
     })
   },
+  comment(comment) {
+    const vm = Stack.page()
+    vm.setData({
+      comment: !comment ? '+1 😂 ' : comment.comment,
+    })
+  },
+  isOpenAsyn(userInfo) {
+    const vm = Stack.page()
+    const data = vm.data
+    const group = data.group
+
+    const headId = group.head_id.toString() || ''
+    const userId = userInfo.id.toString() || ''
+
+    vm.setData({
+      switch: headId === userId,
+    })
+  },
 }

@@ -12,7 +12,7 @@ import Event from '../mwx/event'
 // msg
 import MSG from '../mwx/msg'
 // controller
-import GoController from './go'
+import GoController from '../go'
 
 
 export default {

@@ -1,6 +1,6 @@
 // 路由控制器
-import Go from '../mwx/go'
-import Route from '../route'
+import Go from './mwx/go'
+import Route from './route'
 
 export default {
   /**

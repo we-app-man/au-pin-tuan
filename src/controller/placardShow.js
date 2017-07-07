@@ -11,22 +11,23 @@ import MSG from '../mwx/msg'
 // lang
 import Lang from '../lang/lang'
 import Config from '../config'
-// storage
-import Storage from '../util/storage'
+
 // image
 import Image from '../mwx/image'
 import Event from '../mwx/event'
 // status
 import Status from './status'
 // go
-import GoController from './go'
+import Go from '../go'
 // set
-import Set from '../set/group'
+import SetGroup from '../set/group'
+import SetComment from '../set/comment'
 import Print from '../fn/print'
 // provider
 import GroupProvider from '../provider/group'
-// set
-import SetComment from '../set/comment'
+// filter
+import CommentFilter from '../filter/comment'
+
 
 export default {
   onLoad(ops) {
@@ -42,7 +43,6 @@ export default {
   init() {
     const vm = Stack.page()
     const data = vm.data
-    const that = this
 
     Status.loading(true)
 
@@ -51,27 +51,23 @@ export default {
 
       const groupShow = yield Group.show(data.id)
 
-      Status.loading(false)
-
       const group = groupShow.group
-
-      Set.Group(group)
-
-      const comment = groupShow.comment
-
-      Print.Log(groupShow.group)
 
       if (!group) {
         Print.Log('group 错误了')
         return
       }
 
-      vm.setData({
-        comment: !comment ? '+1 😂 ' : comment.comment,
-      })
+      SetGroup.Group(group)
 
-      that.upComment()
-      that.isOpen()
+      SetGroup.comment(groupShow.comment)
+
+      Print.Log(groupShow.group)
+
+      GroupProvider.upComment()
+      GroupProvider.isOpen()
+
+      Status.loading(false)
     })
   },
   bindKeyInput(e) {
@@ -86,11 +82,12 @@ export default {
    */
   submit() {
     const vm = Stack.page()
-    const that = this
     const comment = vm.data.comment
     const id = vm.data.id
 
-    // MSG.showModal(comment)
+    if (!CommentFilter.isSubmit()) {
+      return
+    }
 
     const obj = {
       comment,
@@ -101,7 +98,7 @@ export default {
       const req = yield Comment.store(obj)
       Print.Log(req)
 
-      that.upComment()
+      GroupProvider.upComment()
     })
   },
   tapImage(e) {
@@ -123,7 +120,8 @@ export default {
     const vm = Stack.page()
     const data = vm.data
     const group = data.group
-      /* eslint no-unused-expressions: "error" */
+
+    /* eslint no-unused-expressions: "error" */
     if (group.open === 1) {
       group.open = 2
     } else {
@@ -134,9 +132,7 @@ export default {
       group,
     })
 
-    co(function* c() {
-      yield Group.updateOpen(group)
-    })
+    Group.updateOpen(group)
   },
   /**
    * 显示更多描述
@@ -154,25 +150,7 @@ export default {
     const vm = Stack.page()
     const data = vm.data
     const group = data.group
-    GoController.groupEdit(group.id, group.type_id)
-  },
-  /**
-   * 更新接龙信息
-   */
-  upComment() {
-    const vm = Stack.page()
-    const data = vm.data
-
-    co(function* c() {
-      const commentShow = yield Comment.show(data.id)
-
-      const commentsList = commentShow.comments
-
-      vm.setData({
-        commentsList,
-      })
-      Print.Log(commentsList)
-    })
+    Go.groupEdit(group.id, group.type_id)
   },
   /**
    * 删除跟团信息
@@ -193,31 +171,4 @@ export default {
 
     Print.Log(id)
   },
-  /**
-   * 是否打开操作开关
-   */
-  isOpen() {
-    const that = this
-    co(function* c() {
-      const userInfo = yield Storage.get(Storage.userInfo)
-      Print.Log(userInfo)
-      if (userInfo) {
-        Print.Log('you')
-        that.isOpenAsyn(userInfo)
-      }
-    })
-  },
-  isOpenAsyn(userInfo) {
-    const vm = Stack.page()
-    const data = vm.data
-    const group = data.group
-
-    const headId = group.head_id.toString() || ''
-    const userId = userInfo.id.toString() || ''
-
-    vm.setData({
-      switch: headId === userId,
-    })
-  },
-
 }

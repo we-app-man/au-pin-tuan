@@ -9,7 +9,7 @@ import Stack from '../mwx/stack'
 // import MSG from '../mwx/msg'
 // event
 import Event from '../mwx/event'
-import Go from './go'
+import Go from '../go'
 // page status
 import Status from './status'
 
