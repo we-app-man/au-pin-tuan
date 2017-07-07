@@ -12,7 +12,6 @@ import Event from '../mwx/event'
 import MSG from '../mwx/msg'
 // controller
 import GoController from './go'
-import FnGroup from '../fn/group'
 // set
 import Set from '../set/group'
 
