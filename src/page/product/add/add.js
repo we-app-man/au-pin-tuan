@@ -1,10 +1,32 @@
-Page({
-  data: {},
-  onLoad(options) {
-    const vm = this
+// controller
+import Product from '../../../controller/product'
 
+Page({
+  data: {
+    description: '',
+    image: [],
+    imageLoad: true,
+    imageList: [{
+      src: '',
+    }, {
+      src: '',
+    }, {
+      src: '',
+    }],
   },
-  onShow() {},
+  onLoad() {},
+  onShow() {
+    Product.init()
+  },
+  bindTextAreaBlur(e) {
+    Product.bindTextAreaBlur(e)
+  },
+  bindUpload(e) {
+    Product.bindUpload(e)
+  },
+  submit() {
+    Product.submit()
+  },
   /**
    * 监听用户下拉动作
    */
@@ -17,13 +39,10 @@ Page({
    * @returns
    */
   onShareAppMessage() {
-    const vm = this
-    const data = vm.data
-
     return {
-      'title': 'title',
+      'title': '谁是第一个发起者，搬个小板凳赶快上车咯🛵🛵🛵',
       'desc': 'desc',
-      'path': '/page/group/group',
+      'path': '/page/product/add/add',
     }
   },
   onReady() {},

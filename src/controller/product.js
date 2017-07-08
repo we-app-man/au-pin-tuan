@@ -41,6 +41,7 @@ export default {
     const vm = Stack.page()
     const description = vm.data.description
     let image = vm.data.image
+      // MSG.showModal(description)
 
     if (description.length < 7) {
       MSG.showModal('多写点描述吧')
@@ -56,7 +57,7 @@ export default {
     const obj = {
       description,
       image,
-      type_id: 1,
+      type_id: 2,
     }
 
     co(function* c() {

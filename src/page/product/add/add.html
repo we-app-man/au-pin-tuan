@@ -5,17 +5,7 @@
   <view class="margin-bottom_10">
     <textarea class="border-ddd_1 padding_6 w-b_100 border-box bg-color-eee" placeholder="团购描述..." auto-focus />
   </view>
-  <view class="flex-box">
-    <view class="thumb-box">
-      <!--<image class="thumb-img" mode="aspectFit" src="../../../img/mystic.svg"></image>-->
-    </view>
-    <view class="thumb-box">
-      <!--<image class="thumb-img" mode="aspectFit" src="../../../img/mystic.svg"></image>-->
-    </view>
-    <view class="thumb-box">
-      <!--<image class="thumb-img" mode="aspectFit" src="../../../img/mystic.svg"></image>-->
-    </view>
-  </view>
+  <include src="../../template/images/list.html" />
 </view>
 <!--币种-->
 <view class="padding_10 border-top-ddd_2 border-bottom-ddd_2 flex-box">
@@ -73,6 +63,6 @@
 
 <!--发起团购按钮-->
 <view class="fixed bottom">
-  <button type="primary" size="default" hover-class="button-hover"> 发起团购 </button>
+  <button bindtap="submit" type="primary" size="default" hover-class="button-hover"> 发起团购 </button>
 </view>
 <!--发起团购按钮 end-->
