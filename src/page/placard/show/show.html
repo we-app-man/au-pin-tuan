@@ -1,34 +1,6 @@
 <include src="../../template/page/head-info.html" />
 
-<!--团内容信息-->
-<view class="border-top-ddd_2 border-bottom-ddd_2 padding_10">
-
-  <!--描述-->
-  <!--有更多-->
-  <view wx:if="{{descBtn}}" class="margin-bottom_10" bindtap="tapDesc">
-    {{desc}} <text class="more-desc-btn">显示更多</text>
-  </view>
-  <!--有更多 end-->
-  <view wx:if="{{!descBtn}}" class="margin-bottom_10" bindtap="tapDesc">
-    {{description}}
-  </view>
-  <!--<view class="">
-    显示更多
-  </view>-->
-  <!--描述 end-->
-
-  <!--团图片-->
-  <view class="flex-box overflow-y">
-    <block wx:for="{{group.image}}" wx:key="{{index}}">
-      <view class="thumb-box" bindtap="tapImage" data-index="{{index}}">
-        <image class="thumb-img" mode="aspectFill" src="{{item}}"></image>
-      </view>
-    </block>
-  </view>
-  <!--团图片 end-->
-</view>
-<!--团内容信息 end-->
-
+<include src="../../template/group/content.html" />
 
 <!--提交输入框-->
 <view class="bg-color-fff">
@@ -57,39 +29,7 @@
 </view>
 <!--提交输入框 end-->
 
-<view class="border-bottom-ddd_2"></view>
-
-<block wx:if="{{commentsList}}" wx:key="index" wx:for="{{commentsList}}">
-  <!--报名订单-->
-  <view class="flex-box padding_10 border-bottom-ddd_1">
-    <!--报名头像-->
-    <view class="flex-box w_46">
-      <view class="height_30 w_16 flex-box align-item-center">{{item.index}}</view>
-      <view class="">
-        <image class="order-thumb-img w_30 height_30 bg-color-eee" mode="aspectFit" src="{{item.avatar}}"></image>
-      </view>
-    </view>
-    <!--报名头像 end-->
-    <!--订单信息-->
-    <view class="flex-2 padding-left_10">
-      <view class="font_12 padding-bottom_5">{{item.alias}}</view>
-      <text>{{item.comment}}</text>
-    </view>
-    <!--订单信息 end-->
-    <!--订单时间-->
-    <view class="font_12 text-right">
-      <view class="color-ddd ">
-        {{item.created_at}}
-      </view>
-      <block wx:if="{{switch}}">
-        <view class="padding-top_10">
-          <button type="warn" size="mini" data-index="{{index}}" data-alias="{{item.alias}}" data-id="{{item.id}}" hover-class="button-hover" bindtap="tabCommentDel">删除</button>
-        </view>
-      </block>
-    </view>
-    <!--订单时间 end-->
-  </view>
-</block>
+<include src="../../template/group/comments.html" />
 
 <!--scsan code-->
 <view class="text-center padding-top_20">
@@ -103,8 +43,4 @@
 </view>
 <!--scsan code end-->
 
-<view class="backtrack-plan"></view>
-<!--返回首页-->
-<navigator url="/page/index/index" class="backtrack anima-feat{{loading ? '-loading' : ''}}" open-type="redirect" hover-class="navigator-hover">
-</navigator>
-<!--返回首页 end-->
+<include src="../../template/group/footer.html" />

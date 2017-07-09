@@ -10,6 +10,13 @@ export default {
   placardShowShare(id) {
     Go.navToOut(`${Route.placardShow}?share=true&id=${id}`)
   },
+  /**
+   * 跳转商品团购详细页显示分享提示
+   * @param {any} id
+   */
+  productShowShare(id) {
+    Go.navToOut(`${Route.productShow}?share=true&id=${id}`)
+  },
   groupType(id, type) {
     if (type === 1) {
       this.placardShow(id)

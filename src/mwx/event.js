@@ -8,4 +8,7 @@ export default {
   dataset(event, key) {
     return event.currentTarget.dataset[key]
   },
+  value(event) {
+    return event.detail.value
+  },
 }

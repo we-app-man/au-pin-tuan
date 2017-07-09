@@ -1,5 +1,5 @@
 // controller
-import PlacardController from '../../../controller/placard'
+import Placard from '../../../controller/placard'
 
 Page({
   data: {
@@ -14,18 +14,20 @@ Page({
       src: '',
     }],
   },
-  onLoad() {},
+  onLoad() {
+    Placard.onLoad()
+  },
   onShow() {
-    PlacardController.init()
+    Placard.init()
   },
   bindTextAreaBlur(e) {
-    PlacardController.bindTextAreaBlur(e)
+    Placard.bindTextAreaBlur(e)
   },
   bindUpload(e) {
-    PlacardController.bindUpload(e)
+    Placard.bindUpload(e)
   },
   submit() {
-    PlacardController.submit()
+    Placard.submit()
   },
   /**
    * 监听用户下拉动作

@@ -1,10 +1,37 @@
+import Placard from '../../../controller/placardShow'
+
 Page({
   data: {},
   onLoad(options) {
-    const vm = this
-
+    Placard.onLoad(options)
   },
-  onShow() {},
+  onShow() {
+    Placard.init()
+  },
+  bindKeyInput(e) {
+    Placard.bindKeyInput(e)
+  },
+  tapOpen() {
+    Placard.tapOpen()
+  },
+  tapDesc() {
+    Placard.tapDesc()
+  },
+  tapEdit() {
+    Placard.tapEdit()
+  },
+  tapImage(e) {
+    Placard.tapImage(e)
+  },
+  tapCodeImage() {
+    Placard.tapCodeImage()
+  },
+  tabCommentDel(e) {
+    Placard.tabCommentDel(e)
+  },
+  submit() {
+    Placard.submit()
+  },
   /**
    * 监听用户下拉动作
    */
@@ -17,13 +44,13 @@ Page({
    * @returns
    */
   onShareAppMessage() {
-    const vm = this
-    const data = vm.data
-
+    const data = this.data
+    const title = '澳洲群一键接龙'
+    const desc = `${data.group.description}..`
     return {
-      'title': 'title',
-      'desc': 'desc',
-      'path': '/page/product/show/show',
+      'title': title,
+      'desc': desc,
+      'path': `/page/product/show/show?id=${data.id}`,
     }
   },
   onReady() {},

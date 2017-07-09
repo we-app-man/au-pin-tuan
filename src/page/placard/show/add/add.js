@@ -14,7 +14,9 @@ Page({
       src: '',
     }],
   },
-  onLoad() {},
+  onLoad() {
+    Product.onLoad()
+  },
   onShow() {
     Product.init()
   },
@@ -23,6 +25,15 @@ Page({
   },
   bindUpload(e) {
     Product.bindUpload(e)
+  },
+  bindProduct(e) {
+    Product.bindProduct(e)
+  },
+  bindPorudctDel(e) {
+    Product.bindPorudctDel(e)
+  },
+  tapAddProduct() {
+    Product.tapAddProduct()
   },
   submit() {
     Product.submit()

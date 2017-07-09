@@ -1,113 +1,78 @@
-import regeneratorRuntime from '../libs/runtime'
-import co from '../libs/co'
-// dao
-import Dao from '../dao/base'
-import User from '../dao/user'
-import Group from '../dao/group'
-import Image from '../dao/image'
 // stack
 import Stack from '../mwx/stack'
-import WXimage from '../mwx/image'
+// middleware
+import GroupMiddleware from '../middleware/group'
+import ProductMiddleware from '../middleware/product'
+// provider
+import GroupProvider from '../provider/group'
+import LoginProvider from '../provider/login'
+// print
+import Print from '../fn/print'
+// set
+import SetProduct from '../set/product'
+// message
+import Message from '../message/modal'
+// envent
 import Event from '../mwx/event'
-// msg
-import MSG from '../mwx/msg'
-// controller
-import GoController from '../go'
 
 
 export default {
-  init() {
+  onLoad() {
     const vm = Stack.page()
-    console.log(vm.data)
-
-    co(function* c() {
-      const userToken = yield Dao.auLogin()
-
-      console.log(userToken)
-
-      const me = yield User.me()
-
-      console.log(me)
+    vm.setData({
+      type_id: 2,
     })
+  },
+  init() {
+    LoginProvider.initLoginUser()
   },
   bindTextAreaBlur(e) {
     const vm = Stack.page()
     vm.setData({
-      description: e.detail.value,
+      description: Event.value(e),
     })
-    console.log(vm)
   },
   submit() {
-    const vm = Stack.page()
-    const description = vm.data.description
-    let image = vm.data.image
-      // MSG.showModal(description)
-
-    if (description.length < 7) {
-      MSG.showModal('多写点描述吧')
+    if (!GroupMiddleware.submit()) {
       return
     }
-
-    if (!image.length) {
-      image = ''
+    if (!ProductMiddleware.submit()) {
+      return
     }
-
-    image = image.toString()
-
-    const obj = {
-      description,
-      image,
-      type_id: 2,
-    }
-
-    co(function* c() {
-      const req = yield Group.store(obj)
-      console.log(req)
-
-      if (req.group) {
-        const id = req.group.id
-        console.log(id)
-        GoController.placardShowShare(id)
-      }
-    })
+    GroupProvider.store()
   },
   /**
    * 点击选择图片上传
    * @param {any} e
    */
   bindUpload(e) {
+    GroupProvider.imgUpload(e)
+  },
+  /**
+   * 添加商品
+   */
+  tapAddProduct() {
+    if (!ProductMiddleware.add()) {
+      Message.productInput()
+      return
+    }
+
+    SetProduct.push()
+
+    Print.Log('ok')
+  },
+  bindProduct(e) {
     const vm = Stack.page()
-    const imgIndex = Event.dataset(e, 'id')
-    const data = vm.data
-    const imageList = data.imageList
-    const image = data.image
-    co(function* c() {
-      const filepath = yield WXimage.chooseImage()
+    const val = Event.value(e)
+    const index = Event.dataset(e, 'index')
+    const name = Event.dataset(e, 'name')
+    const products = vm.data.products
+    products[index][name] = val
 
-      if (!filepath) {
-        console.log('选择图片取消')
-        return
-      }
-      console.log(filepath)
-      console.log(imgIndex)
-      imageList[imgIndex].src = filepath
-
-      vm.setData({
-        imageList,
-      })
-
-      const imgPath = yield Image.store(filepath)
-
-      console.log(imgPath)
-
-      imageList[imgIndex].src = imgPath.src
-
-      image[imgIndex] = imgPath.path
-
-      vm.setData({
-        imageList,
-        image,
-      })
-    })
+    SetProduct.products(products)
+  },
+  bindPorudctDel(e) {
+    const index = Event.dataset(e, 'index')
+    SetProduct.removeIndex(index)
   },
 }
