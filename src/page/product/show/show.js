@@ -1,36 +1,36 @@
-import Placard from '../../../controller/placardShow'
+import Product from '../../../controller/productShow'
 
 Page({
   data: {},
   onLoad(options) {
-    Placard.onLoad(options)
+    Product.onLoad(options)
   },
   onShow() {
-    Placard.init()
+    Product.init()
   },
   bindKeyInput(e) {
-    Placard.bindKeyInput(e)
+    Product.bindKeyInput(e)
   },
   tapOpen() {
-    Placard.tapOpen()
+    Product.tapOpen()
   },
   tapDesc() {
-    Placard.tapDesc()
+    Product.tapDesc()
   },
   tapEdit() {
-    Placard.tapEdit()
+    Product.tapEdit()
   },
   tapImage(e) {
-    Placard.tapImage(e)
+    Product.tapImage(e)
   },
   tapCodeImage() {
-    Placard.tapCodeImage()
+    Product.tapCodeImage()
   },
   tabCommentDel(e) {
-    Placard.tabCommentDel(e)
+    Product.tabCommentDel(e)
   },
   submit() {
-    Placard.submit()
+    Product.submit()
   },
   /**
    * 监听用户下拉动作
