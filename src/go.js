@@ -17,18 +17,6 @@ export default {
   productShowShare(id) {
     Go.navToOut(`${Route.productShow}?share=true&id=${id}`)
   },
-  groupShow(id, type) {
-    if (type === 1) {
-      this.placardShow(id)
-    } else {
-      this.productShow(id)
-    }
-  },
-  groupEdit(id, type) {
-    if (type === 1) {
-      this.placardEdit(id)
-    }
-  },
   /**
    * 打开拼团详细页
    * @param {any} id

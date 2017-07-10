@@ -7,7 +7,7 @@ import Comment from '../dao/comment'
 import Stack from '../mwx/stack'
 // event
 import Event from '../mwx/event'
-import Go from '../go'
+import GoType from '../provider/goType'
 // page status
 import Status from './status'
 // print
@@ -44,6 +44,6 @@ export default {
   tapDetail(e) {
     const id = Event.dataset(e, 'id')
     const type = Event.dataset(e, 'type')
-    Go.groupShow(id, type)
+    GoType.groupShow(id, type)
   },
 }

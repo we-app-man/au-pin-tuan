@@ -10,6 +10,7 @@ import MSG from '../mwx/msg'
 // event
 import Event from '../mwx/event'
 import Go from '../go'
+import GoType from '../provider/goType'
 // page status
 import Status from './status'
 // print
@@ -48,7 +49,8 @@ export default {
     const id = Event.dataset(e, 'id')
     const type = Event.dataset(e, 'type')
 
-    Go.groupShow(id, type)
+    GoType.groupShow(id, type)
+    Print.Log(id)
     Print.Log(type)
   },
   /**
