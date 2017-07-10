@@ -12,12 +12,12 @@ import Event from '../mwx/event'
 import Go from '../go'
 // page status
 import Status from './status'
+// print
+import Print from '../fn/print'
 
 export default {
   init() {
     const vm = Stack.page()
-    console.log(vm.data)
-
     Status.loading(true)
 
     co(function* c() {
@@ -32,7 +32,7 @@ export default {
       vm.setData({
         groups,
       })
-      console.log(groupIndex)
+      Print.Log(groupIndex)
 
       if (!groups.length) {
         Status.notfind(true)
@@ -44,12 +44,12 @@ export default {
    * @param {any} e
    */
   tapDetail(e) {
-    console.log(e)
+    Print.Log(e)
     const id = Event.dataset(e, 'id')
     const type = Event.dataset(e, 'type')
 
-    Go.groupType(id, type)
-    console.log(type)
+    Go.groupShow(id, type)
+    Print.Log(type)
   },
   /**
    * 删除
@@ -73,14 +73,13 @@ export default {
 
       if (delReq.error) {
         MSG.showModal(delReq.message)
-
         return
       }
 
       MSG.title('ok')
 
       that.init()
-      console.log(delReq)
+      Print.Log(delReq)
     })
   },
 }

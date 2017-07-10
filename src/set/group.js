@@ -2,7 +2,7 @@
 import Stack from '../mwx/stack'
 import FnImage from '../fn/image'
 import Config from '../config'
-import FnString from '../util/string'
+import FnString from '../fn/string'
 // env
 import Env from '../env'
 

@@ -17,9 +17,11 @@ export default {
   productShowShare(id) {
     Go.navToOut(`${Route.productShow}?share=true&id=${id}`)
   },
-  groupType(id, type) {
+  groupShow(id, type) {
     if (type === 1) {
       this.placardShow(id)
+    } else {
+      this.productShow(id)
     }
   },
   groupEdit(id, type) {
@@ -40,5 +42,12 @@ export default {
    */
   placardEdit(id) {
     Go.navTo(`${Route.placardEdit}?id=${id}`)
+  },
+  /**
+   * 打开拼团详细页
+   * @param {any} id
+   */
+  productShow(id) {
+    Go.navTo(`${Route.productShow}?id=${id}`)
   },
 }
