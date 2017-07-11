@@ -4,7 +4,7 @@
     商品名称：
   </view>
   <view class="flex_2">
-    <input bindinput="bindProduct" data-name="name" data-index="{{index}}" value="{{item.name}}" class="font_14" placeholder="商品描述，单位信息" />
+    <input bindinput="bindProduct" confirm-type="done" data-name="name" data-index="{{index}}" value="{{item.name}}" class="font_14" placeholder="商品描述，单位信息" />
   </view>
 </view>
 <!--商品名称 end-->
@@ -15,7 +15,7 @@
     商品价格： $
   </view>
   <view class="flex_2">
-    <input bindinput="bindProduct" data-name="price" data-index="{{index}}" value="{{item.price}}" placeholder="" />
+    <input bindinput="bindProduct" type="digit" data-name="price" data-index="{{index}}" value="{{item.price}}" placeholder="" />
   </view>
 </view>
 <!--商品价格 end-->
