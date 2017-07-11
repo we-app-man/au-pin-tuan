@@ -29,6 +29,15 @@ Page({
   tabCommentDel(e) {
     Product.tabCommentDel(e)
   },
+  tabPlusCut(e) {
+    Product.tabPlusCut(e)
+  },
+  tabPlus(e) {
+    Product.tabPlus(e)
+  },
+  tabCut(e) {
+    Product.tabCut(e)
+  },
   submit() {
     Product.submit()
   },

@@ -5,6 +5,7 @@
 import {
   Promise,
 } from '../libs/es6-promise'
+import Message from '../message/modal'
 
 export default {
   /**
@@ -28,12 +29,15 @@ export default {
               resolve(obj)
             },
             fail(err) {
-              wx.openSetting({
-                success: (res) => {
-                  console.log(res)
-                },
-              })
-
+              if (wx.openSetting) {
+                wx.openSetting({
+                  success: (res) => {
+                    console.log(res)
+                  },
+                })
+              } else {
+                Message.openSetting()
+              }
               reject(err)
             },
           })

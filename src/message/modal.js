@@ -20,4 +20,8 @@ export default {
     const content = '商品信息输入不完整'
     Msg.showModal(content)
   },
+  openSetting() {
+    const content = '授权失败, 请删除重新打开允许授权'
+    Msg.showModal(content)
+  },
 }

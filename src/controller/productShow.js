@@ -23,6 +23,9 @@ import Go from '../go'
 // set
 import SetGroup from '../set/group'
 import SetComment from '../set/comment'
+import SetProduct from '../set/productShow'
+// fn
+import FnProduct from '../fn/product'
 import Print from '../fn/print'
 // provider
 import GroupProvider from '../provider/group'
@@ -69,9 +72,7 @@ export default {
       const products = productShow.products
       Print.Log(productShow.products)
 
-      vm.setData({
-        products,
-      })
+      SetProduct.products(products)
 
       GroupProvider.upComment()
       GroupProvider.isOpen()
@@ -92,15 +93,20 @@ export default {
   submit() {
     const vm = Stack.page()
     const comment = vm.data.comment
+    const products = vm.data.products
     const id = vm.data.id
 
     if (!CommentFilter.isSubmit()) {
       return
     }
 
+    const productComment = FnProduct.commentProduct(products)
+
     const obj = {
       comment,
       group_id: id,
+      products,
+      product_comment: productComment,
     }
 
     co(function* c() {
@@ -179,5 +185,20 @@ export default {
     })
 
     Print.Log(id)
+  },
+  tabPlusCut(e) {
+    const index = Event.dataset(e, 'index')
+    const bool = Event.dataset(e, 'bool')
+    SetProduct.productsIndex(bool, index)
+  },
+  tabPlus(e) {
+    const index = Event.dataset(e, 'index')
+    Print.Log(index)
+    SetProduct.productsIndex(true, index)
+  },
+  tabCut(e) {
+    const index = Event.dataset(e, 'index')
+    Print.Log(index)
+    SetProduct.productsIndex(false, index)
   },
 }

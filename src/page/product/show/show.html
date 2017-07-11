@@ -5,26 +5,38 @@
 <!--团内容信息 end-->
 
 <!--团购的商品列表-->
-<block wx:for="{{products}}">
+<block wx:for="{{products}}" wx:key="index">
   <include src="product.html" />
 </block>
 <!--团购的商品列表 end-->
 
+<view wx:if="{{totalPrice}}" class="padding_10">
+  <view class="flex-2">
+    <text class="">总价: </text>
+    <text class="color-red font_16">${{totalPrice}}</text>
+  </view>
+</view>
 <!--提交输入框-->
 <view class="bg-color-fff">
   <view class="padding_10">
     <!--输入-->
     <view class="">
-      <input bindinput="bindKeyInput" class="border-ddd_1 font_12 padding_5" placeholder="还有什么要说的可以告诉我哦" />
+      <input value="{{comment}}" bindinput="bindKeyInput" class="border-ddd_1 font_12 padding_5" placeholder="还有什么要说的可以告诉我哦" />
     </view>
     <!--输入 end -->
     <view class="flex-box padding-top_10">
       <view class="flex-2">
-        <text class="">总价: </text>
-        <text class="color-red font_16">$209.22</text>
+        <block wx:if="{{switch}}">
+          <button type="{{group.open == 1 ? 'warn': 'primary'}}" size="mini" hover-class="button-hover" bindtap="tapOpen">
+              {{group.open == 1 ? '截止': '开启'}}
+            </button>
+          <!--<button bindtap="tapEdit" class="margin-left_10" type="defaule" size="mini" hover-class="button-hover">
+                编辑
+            </button>-->
+        </block>
       </view>
       <view class="">
-        <button type="primary" size="mini" hover-class="button-hover" bindtap="tapCopy">跟团购</button>
+        <button wx:if="{{totalPrice}}" type="primary" size="mini" hover-class="button-hover" bindtap="submit">跟团购</button>
       </view>
     </view>
   </view>

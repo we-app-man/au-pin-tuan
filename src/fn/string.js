@@ -33,4 +33,21 @@ export default {
     }
     return newStr
   },
+  toDecimal2(x) {
+    const floatnum = parseFloat(x)
+    if (isNaN(floatnum)) {
+      return false
+    }
+    const num = Math.round(x * 100) / 100
+    let s = num.toString()
+    let rs = s.indexOf('.')
+    if (rs < 0) {
+      rs = s.length
+      s += '.'
+    }
+    while (s.length <= rs + 2) {
+      s += '0'
+    }
+    return s
+  },
 }
