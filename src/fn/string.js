@@ -8,29 +8,39 @@ export default {
    * @returns
    */
   subString(str, len, hasDot) {
-    let newLength = 0
-    let newStr = ''
-    const chineseRegex = /[^\x00-\xff]/g
-    let singleChar = ''
-    const strLength = str.replace(chineseRegex, '**').length
+    // let newLength = 0
+    // let newStr = ''
+    // const chineseRegex = /[^\x00-\xff]/g
+    // let singleChar = ''
+    // const strLength = str.replace(chineseRegex, '**').length
 
-    let i
-    for (i = 0; i < strLength; i += 1) {
-      singleChar = str.charAt(i).toString()
-      if (singleChar.match(chineseRegex) != null) {
-        newLength += 2
-      } else {
-        newLength += 1
-      }
-      if (newLength > len) {
-        break
-      }
-      newStr += singleChar
+    // let i
+    // for (i = 0; i < strLength; i += 1) {
+    //   singleChar = str.charAt(i).toString()
+    //   if (singleChar.match(chineseRegex) != null) {
+    //     newLength += 2
+    //   } else {
+    //     newLength += 1
+    //   }
+    //   if (newLength > len) {
+    //     break
+    //   }
+    //   newStr += singleChar
+    // }
+
+    // if (hasDot && strLength > len) {
+    //   newStr += '...'
+    // }
+    // return newStr
+
+    if (str.length < len) {
+      return str
     }
 
-    if (hasDot && strLength > len) {
-      newStr += '...'
-    }
+    const dot = hasDot || '...'
+
+    let newStr = str.substring(0, len)
+    newStr += dot
     return newStr
   },
   toDecimal2(x) {

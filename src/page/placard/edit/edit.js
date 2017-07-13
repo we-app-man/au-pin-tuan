@@ -5,6 +5,7 @@ Page({
   data: {
     description: '',
     image: [],
+    placeholder:'举个栗子：今晚8点，西在北路公园集合，野跑。不想gua 掉的 赶紧接龙一起锻炼',
     imageLoad: true,
     imageList: [{
       src: '',

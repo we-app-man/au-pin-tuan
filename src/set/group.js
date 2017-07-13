@@ -21,8 +21,8 @@ export default {
       group.image = FnImage.AddHost(group.image)
     }
 
-    if (description.length > 90) {
-      desc = FnString.subString(description, 76, '...')
+    if (description.length > 50) {
+      desc = FnString.subString(description, 50, '...')
       descMore = true
       descBtn = true
     }

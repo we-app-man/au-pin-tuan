@@ -70,9 +70,10 @@ page {
   position: fixed;
   right: 10px;
   bottom: 10px;
-  width: 60px;
-  height: 60px;
-  background: url("img__svg/pokestop.svg") no-repeat center center;
+  width: 40px;
+  height: 40px;
+  background: url("img__svg/house.svg") no-repeat center center;
+  background-size: 30px 30px;
 }
 
 .backtrack-plan {
@@ -95,7 +96,42 @@ page {
   }
 }
 
+@keyframes rotateU {
+  50% {
+    transform: rotate(7deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
 .code-img {
   width: 200px;
   height: 200px;
+}
+
+.comment-statistics {
+  position: absolute;
+  right: 0;
+  top: 0;
+  font-size: 12px;
+  color: #48ADE1;
+}
+
+.icon-peopele {
+  height: 30px;
+  width: 30px;
+  background: url("img__svg/networking.svg") no-repeat center center;
+  background-size: 30px 30px;
+  animation: 3.55s linear 0s alternate none infinite rotateU;
+}
+
+// 隐私保密
+.secrecy-wrap {
+  border-top: 2px solid salmon;
+  // border-bottom: 2px solid salmon;
+}
+
+.secrecy-color {
+  color: salmon;
 }

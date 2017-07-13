@@ -5,6 +5,7 @@ Page({
   data: {
     description: '',
     image: [],
+    placeholder: '1月12日， Opera House，聚会活动….',
     imageLoad: true,
     imageList: [{
       src: '',
@@ -44,18 +45,18 @@ Page({
   onPullDownRefresh() {
     wx.stopPullDownRefresh()
   },
-  /**
-   * 分享
-   * @param {any} page
-   * @returns
-   */
-  onShareAppMessage() {
-    return {
-      'title': '谁是第一个发起者，搬个小板凳赶快上车咯🛵🛵🛵',
-      'desc': 'desc',
-      'path': '/page/product/add/add',
-    }
-  },
+  // /**
+  //  * 分享
+  //  * @param {any} page
+  //  * @returns
+  //  */
+  // onShareAppMessage() {
+  //   return {
+  //     'title': '谁是第一个发起者，搬个小板凳赶快上车咯🛵🛵🛵',
+  //     'desc': 'desc',
+  //     'path': '/page/product/add/add',
+  //   }
+  // },
   onReady() {},
   onHide() {},
   onUnload() {},

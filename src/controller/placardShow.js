@@ -113,6 +113,11 @@ export default {
     const codeSrc = vm.data.codeSrc
     Image.previewImage(codeSrc, [codeSrc])
   },
+  tabAvatar() {
+    const vm = Stack.page()
+    const avatar = vm.data.group.avatar
+    Image.previewImage(avatar, [avatar])
+  },
   /**
    * 修改团状态 open
    */

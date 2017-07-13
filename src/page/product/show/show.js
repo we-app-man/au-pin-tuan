@@ -11,6 +11,12 @@ Page({
   bindKeyInput(e) {
     Product.bindKeyInput(e)
   },
+  bindKeyInputPhone(e) {
+    Product.bindKeyInputPhone(e)
+  },
+  bindKeyInputName(e) {
+    Product.bindKeyInputName(e)
+  },
   tapOpen() {
     Product.tapOpen()
   },
@@ -25,6 +31,12 @@ Page({
   },
   tapCodeImage() {
     Product.tapCodeImage()
+  },
+  tabAvatar() {
+    Product.tabAvatar()
+  },
+  tabSecrecy() {
+    Product.tabSecrecy()
   },
   tabCommentDel(e) {
     Product.tabCommentDel(e)

@@ -13,16 +13,14 @@
 <view wx:if="{{totalPrice}}" class="padding_10">
   <view class="flex-2">
     <text class="">总价: </text>
-    <text class="color-red font_16">${{totalPrice}}</text>
+    <text class="color-red font_16">AUS${{totalPrice}}</text>
   </view>
 </view>
 <!--提交输入框-->
 <view class="bg-color-fff">
   <view class="padding_10">
     <!--输入-->
-    <view class="">
-      <input value="{{comment}}" bindinput="bindKeyInput" class="border-ddd_1 font_12 padding_5" placeholder="还有什么要说的可以告诉我哦" />
-    </view>
+    <include src="../../template/group/input.html" />
     <!--输入 end -->
     <view class="flex-box padding-top_10">
       <view class="flex-2">
@@ -44,5 +42,7 @@
 <!--提交输入框 end-->
 
 <include src="../../template/group/comments.html" />
+
+<include src="../../template/group/code.html" />
 
 <include src="../../template/group/footer.html" />

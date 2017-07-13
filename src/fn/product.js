@@ -17,8 +17,9 @@ export default {
     for (i = 0; i < len; i += 1) {
       const item = products[i]
       const itemStr = `${item.name} x ${item.amount}`
-
-      str += `${itemStr}\n`
+      if ((item.amount - 0) > 0) {
+        str += `${itemStr}\n`
+      }
     }
 
     return str

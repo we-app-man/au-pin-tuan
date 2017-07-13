@@ -5,13 +5,13 @@ page {
 .svg_1 {
   width: 80px;
   height: 80px;
-  background: url("img__svg/dratini.svg") no-repeat center center;
+  background: url("img__svg/boy_1.svg") no-repeat center bottom;
 }
 
 .svg_2 {
   width: 80px;
   height: 80px;
-  background: url("img__svg/squirtle.svg") no-repeat center center;
+  background: url("img__svg/girl.svg") no-repeat center bottom;
 }
 
 .btn-navigator {}
@@ -29,7 +29,7 @@ page {
       background-color: #42B1E8;
     }
     &_2 {
-      background-color: #70D3E0;
+      background-color: #00AB9A;
     }
   }
   &-color {
@@ -37,7 +37,7 @@ page {
       color: #42B1E8;
     }
     &_2 {
-      color: #70D3E0;
+      color: #00AB9A;
     }
   }
 }

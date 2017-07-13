@@ -31,6 +31,8 @@ import Print from '../fn/print'
 import GroupProvider from '../provider/group'
 // filter
 import CommentFilter from '../filter/comment'
+// middleware
+import ProductMiddleware from '../middleware/productShow'
 
 
 export default {
@@ -83,7 +85,21 @@ export default {
   bindKeyInput(e) {
     const vm = Stack.page()
     vm.setData({
-      comment: e.detail.value,
+      comment: Event.value(e),
+    })
+    Print.Log(vm)
+  },
+  bindKeyInputPhone(e) {
+    const vm = Stack.page()
+    vm.setData({
+      phone: Event.value(e),
+    })
+    Print.Log(vm)
+  },
+  bindKeyInputName(e) {
+    const vm = Stack.page()
+    vm.setData({
+      name: Event.value(e),
     })
     Print.Log(vm)
   },
@@ -97,6 +113,10 @@ export default {
     const id = vm.data.id
 
     if (!CommentFilter.isSubmit()) {
+      return
+    }
+
+    if (!ProductMiddleware.submit()) {
       return
     }
 
@@ -127,6 +147,18 @@ export default {
     const vm = Stack.page()
     const codeSrc = vm.data.codeSrc
     Image.previewImage(codeSrc, [codeSrc])
+  },
+  tabAvatar() {
+    const vm = Stack.page()
+    const avatar = vm.data.group.avatar
+    Image.previewImage(avatar, [avatar])
+  },
+  tabSecrecy() {
+    const vm = Stack.page()
+    const secrecy = vm.data.secrecy
+    vm.setData({
+      secrecy: !secrecy,
+    })
   },
   /**
    * 修改团状态 open

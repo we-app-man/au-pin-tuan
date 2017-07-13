@@ -20,18 +20,6 @@ Page({
   onPullDownRefresh() {
     wx.stopPullDownRefresh()
   },
-  /**
-   * 分享
-   * @param {any} page
-   * @returns
-   */
-  onShareAppMessage() {
-    return {
-      'title': '我发起的，搬个小板凳赶快上车咯🛵🛵🛵',
-      'desc': 'desc',
-      'path': '/page/initiate/initiate',
-    }
-  },
   onReady() {},
   onHide() {},
   onUnload() {},

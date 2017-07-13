@@ -1,6 +1,6 @@
 <view class="flex-box padding-x_10 padding-y_15 margin-bottom_1">
   <!--团长头像-->
-  <view class="header-thumb justify-center  text-center flex-box align-item-center">
+  <view class="header-thumb justify-center  text-center flex-box align-item-center" bindtap="tabAvatar">
     <image class="header-thumb-img" mode="aspectFill" src="{{group.avatar}}"></image>
     <view class="{{group.open == 1 ? 'bg-primary': 'bg-warn'}} header-thumb-status text-center font_12 padding-y_2">
       {{group.open == 1 ? '接龙中': '已截至'}}
@@ -17,4 +17,10 @@
     </view>
   </view>
   <!--团长信息end-->
+</view>
+<view class="comment-statistics text-center padding_10">
+  <view class="icon-peopele margin-auto"></view>
+  <view class="padding-top_5">
+    已接龙{{commentsList.length}}人
+  </view>
 </view>

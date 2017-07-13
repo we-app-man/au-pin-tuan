@@ -1,7 +1,10 @@
+<view class="padding-x_10 padding-top_10">
+  下面列表点击即可到详情页面哦
+</view>
 <block wx:for="{{groups}}" wx:key="index">
   <view class="bg-color-fff margin-top_10 padding_10" bindtap="tapDetail" data-id="{{item.id}}" data-type="{{item.type_id}}">
     <view class="font_16 margin-bottom_5">
-    {{item.description}}
+      {{item.description}}
     </view>
     <view class="font_13 color-ddd margin-bottom_5">
       发起时间: {{item.created_at}}
@@ -19,7 +22,7 @@
       </view>-->
       <view class="flex_2"></view>
       <view wx:if="{{item.open == 1 }}" class="text-right" catchtap="handleTap2">
-        <button bindtap="tapDel" data-id="{{item.id}}" type="warn" class="font_12" size="mini2" hover-class="button-hover" >删除</button>
+        <button bindtap="tapDel" data-id="{{item.id}}" type="warn" class="font_12" size="mini2" hover-class="button-hover">删除</button>
       </view>
     </view>
     <!--接龙状态 end-->

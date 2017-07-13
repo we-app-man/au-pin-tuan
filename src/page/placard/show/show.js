@@ -26,6 +26,9 @@ Page({
   tapCodeImage() {
     Placard.tapCodeImage()
   },
+  tabAvatar() {
+    Placard.tabAvatar()
+  },
   tabCommentDel(e) {
     Placard.tabCommentDel(e)
   },
