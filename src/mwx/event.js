@@ -11,4 +11,7 @@ export default {
   value(event) {
     return event.detail.value
   },
+  formId(event) {
+    return event.detail.formId
+  },
 }

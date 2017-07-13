@@ -50,6 +50,9 @@ Page({
   tabCut(e) {
     Product.tabCut(e)
   },
+  formSubmit(e) {
+    Product.formSubmit(e)
+  },
   submit() {
     Product.submit()
   },

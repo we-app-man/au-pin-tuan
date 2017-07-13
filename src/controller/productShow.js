@@ -33,6 +33,7 @@ import GroupProvider from '../provider/group'
 import CommentFilter from '../filter/comment'
 // middleware
 import ProductMiddleware from '../middleware/productShow'
+// toast
 
 
 export default {
@@ -126,6 +127,41 @@ export default {
       comment,
       group_id: id,
       products,
+      product_comment: productComment,
+    }
+
+    co(function* c() {
+      const req = yield Comment.store(obj)
+      if (!req.error) {
+        MSG.showModal('跟团成功')
+      }
+      Print.Log(req)
+
+      GroupProvider.upComment()
+    })
+  },
+  formSubmit(e) {
+    const vm = Stack.page()
+    const comment = vm.data.comment
+    const products = vm.data.products
+    const formId = Event.formId(e)
+    const id = vm.data.id
+
+    if (!CommentFilter.isSubmit()) {
+      return
+    }
+
+    if (!ProductMiddleware.submit()) {
+      return
+    }
+
+    const productComment = FnProduct.commentProduct(products)
+
+    const obj = {
+      comment,
+      group_id: id,
+      products,
+      form_id: formId,
       product_comment: productComment,
     }
 
