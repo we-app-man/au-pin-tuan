@@ -157,6 +157,12 @@ export default {
     const group = data.group
     Go.groupEdit(group.id, group.type_id)
   },
+  tapEmail() {
+    const vm = Stack.page()
+    const data = vm.data
+    const group = data.group
+    Go.emailSend(group.id)
+  },
   /**
    * 删除跟团信息
    * @param {any} e

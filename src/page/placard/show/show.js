@@ -20,6 +20,9 @@ Page({
   tapEdit() {
     Placard.tapEdit()
   },
+  tapEmail() {
+    Placard.tapEmail()
+  },
   tapImage(e) {
     Placard.tapImage(e)
   },

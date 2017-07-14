@@ -28,6 +28,9 @@ Page({
   tapEdit() {
     Product.tapEdit()
   },
+  tapEmail() {
+    Product.tapEmail()
+  },
   tapImage(e) {
     Product.tapImage(e)
   },

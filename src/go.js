@@ -39,6 +39,13 @@ export default {
     Go.navTo(`${Route.productShow}?id=${id}`)
   },
   /**
+   * 打开导出
+   * @param {any} id
+   */
+  emailSend(id) {
+    Go.navTo(`${Route.email}${id}`)
+  },
+  /**
    * 提交成功后返回上一页
    */
   navBack(title) {
