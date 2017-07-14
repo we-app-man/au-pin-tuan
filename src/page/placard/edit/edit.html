@@ -3,7 +3,7 @@
     编辑报名信息，分享到群，愉快的接龙吧！
   </view>
   <view class="margin-bottom_10">
-    <textarea bindblur="bindTextAreaBlur" value="{{description}}" class="border-ddd_1 padding_6 w-b_100 border-box bg-color-eee" maxlength="-1" placeholder="{{placeholder}}" auto-focus />
+    <textarea bindinput="bindTextAreaBlur" value="{{description}}" class="border-ddd_1 padding_6 w-b_100 border-box bg-color-eee" maxlength="-1" placeholder="{{placeholder}}" auto-focus />
   </view>
   <view class="flex-box overflow-y">
     <block wx:for="{{imageList}}" wx:key="index">

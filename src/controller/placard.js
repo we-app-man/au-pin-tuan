@@ -5,6 +5,9 @@ import GroupMiddleware from '../middleware/group'
 // provider
 import GroupProvider from '../provider/group'
 import LoginProvider from '../provider/login'
+import StoragePro from '../provider/storage'
+import Istorage from '../mwx/storage'
+import Event from '../mwx/event'
 
 
 export default {
@@ -16,12 +19,15 @@ export default {
   },
   init() {
     LoginProvider.initLoginUser()
+    StoragePro.description()
   },
   bindTextAreaBlur(e) {
     const vm = Stack.page()
+    const description = Event.value(e)
     vm.setData({
-      description: e.detail.value,
+      description,
     })
+    Istorage.set(Istorage.description, description)
   },
   submit() {
     if (!GroupMiddleware.submit()) {

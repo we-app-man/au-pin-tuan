@@ -5,7 +5,8 @@ Page({
   data: {
     description: '',
     image: [],
-    placeholder:'举个栗子：今晚8点，西在北路公园集合，野跑。不想gua 掉的 赶紧接龙一起锻炼',
+    column: '编辑报名信息，分享到群，愉快的接龙吧！',
+    placeholder: '1月12日， Opera House，聚会活动….',
     imageLoad: true,
     imageList: [{
       src: '',

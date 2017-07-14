@@ -18,6 +18,8 @@ import SetGroup from '../set/group'
 import Storage from '../util/storage'
 // doa
 import Group from '../dao/group'
+import Istorage from '../mwx/storage'
+
 
 export default {
   store() {
@@ -47,6 +49,11 @@ export default {
     req.then((val) => {
       const id = val.group.id
       Print.Log(id)
+
+      Istorage.remove(Istorage.description)
+      Istorage.remove(Istorage.image)
+      Istorage.remove(Istorage.imageList)
+
       if (typeId === 1) {
         Go.placardShowShare(id)
       } else {
@@ -89,6 +96,9 @@ export default {
         image,
         imgUpload: false,
       })
+
+      Istorage.set(Istorage.image, image)
+      Istorage.set(Istorage.imageList, imageList)
     })
   },
   /**

@@ -19,8 +19,13 @@
   <!--团长信息end-->
 </view>
 <view class="comment-statistics text-center padding_10">
-  <view class="icon-peopele margin-auto"></view>
-  <view class="padding-top_5">
-    已接龙{{commentsList.length}}人
-  </view>
+  <navigator url="/page/group/index" hover-class="navigator-hover">
+    <view class="icon-peopele margin-auto"></view>
+    <view class="padding-top_5">
+      已接龙{{commentsList.length}}人
+    </view>
+    <view class="do-tap-group">
+      当团长
+    </view>
+  </navigator>
 </view>

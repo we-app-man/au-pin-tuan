@@ -6,8 +6,8 @@ Page({
     description: '',
     image: [],
     currencyCode: 'AUD$',
-    column: '团购描述...',
-    placeholder: '',
+    column: '编辑团购信息，分享到群，愉快的接龙吧！',
+    placeholder: '团购描述...',
     imageLoad: true,
     imageList: [{
       src: '',

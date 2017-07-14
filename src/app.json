@@ -10,7 +10,8 @@
     "page/placard/show/show",
     "page/placard/edit/edit",
     "page/help/help",
-    "page/group/index"
+    "page/group/index",
+    "page/email/email"
   ],
   "window": {
     "navigationBarTextStyle": "black",
