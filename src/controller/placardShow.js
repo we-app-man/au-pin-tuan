@@ -155,7 +155,7 @@ export default {
     const vm = Stack.page()
     const data = vm.data
     const group = data.group
-    Go.groupEdit(group.id, group.type_id)
+    Go.placardEdit(group.id)
   },
   tapEmail() {
     const vm = Stack.page()
