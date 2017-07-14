@@ -1,7 +1,9 @@
 import Product from '../../../controller/productShow'
 
 Page({
-  data: {},
+  data: {
+    currencyCode: 'AUD$',
+  },
   onLoad(options) {
     Product.onLoad(options)
   },

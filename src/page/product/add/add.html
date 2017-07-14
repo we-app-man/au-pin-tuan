@@ -1,6 +1,6 @@
 <view class="padding_10">
   <view class="font_16 color_000 margin-bottom_10">
-    编辑团购信息，分享到群，愉快的接龙吧！
+    {{column}}
   </view>
   <view class="margin-bottom_10">
     <textarea bindinput="bindTextAreaBlur" class="border-ddd_1 padding_6 w-b_100 border-box bg-color-eee" maxlength="-1" placeholder="{{placeholder}}" />
@@ -11,7 +11,7 @@
 <view class="padding_10 border-top-ddd_2 border-bottom-ddd_2 flex-box">
   <view class="flex-2">币种</view>
   <view class="flex-2 text-right">
-    澳元 - AUD$
+    澳元 - {{currencyCode}}
   </view>
 </view>
 <!--币种 end-->

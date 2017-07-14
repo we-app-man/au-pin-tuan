@@ -5,7 +5,9 @@ Page({
   data: {
     description: '',
     image: [],
-    placeholder: '1月12日， Opera House，聚会活动….',
+    currencyCode: 'AUD$',
+    column: '团购描述...',
+    placeholder: '',
     imageLoad: true,
     imageList: [{
       src: '',
