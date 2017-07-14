@@ -21,7 +21,6 @@ export default {
   },
   /**
    * 消息提示
-   *
    * @param {string} [title='成功']
    * @param {number} [time=1000]
    */

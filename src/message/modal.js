@@ -25,7 +25,7 @@ export default {
     Msg.showModal(content)
   },
   phoneNot() {
-    const content = '请输入手机号,放心吧只有团长可以看到'
+    const content = '联系方式仅团长可见'
     Msg.showModal(content)
   },
   nameNot() {

@@ -111,6 +111,7 @@ export default {
     const vm = Stack.page()
     const comment = vm.data.comment
     const products = vm.data.products
+    const totalPrice = vm.data.totalPrice
     const id = vm.data.id
 
     if (!CommentFilter.isSubmit()) {
@@ -127,6 +128,7 @@ export default {
       comment,
       group_id: id,
       products,
+      total_price: totalPrice,
       product_comment: productComment,
     }
 
@@ -144,6 +146,9 @@ export default {
     const vm = Stack.page()
     const comment = vm.data.comment
     const products = vm.data.products
+    const totalPrice = vm.data.totalPrice
+    const phone = vm.data.phone
+    const name = vm.data.name
     const formId = Event.formId(e)
     const id = vm.data.id
 
@@ -159,16 +164,21 @@ export default {
 
     const obj = {
       comment,
+      phone,
+      name,
       group_id: id,
       products,
+      total_price: totalPrice,
       form_id: formId,
       product_comment: productComment,
     }
 
+    Status.loading(true)
     co(function* c() {
       const req = yield Comment.store(obj)
       Print.Log(req)
-
+      MSG.title(req.message)
+      Status.loadingClone()
       GroupProvider.upComment()
     })
   },

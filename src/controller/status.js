@@ -12,6 +12,12 @@ export default {
       loading: bool,
     })
   },
+  loadingClone() {
+    const vm = Stack.page()
+    vm.setData({
+      loading: false,
+    })
+  },
   /**
    * 数据错误处理
    * @param {any} notfind
