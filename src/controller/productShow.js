@@ -17,7 +17,7 @@ import Config from '../config'
 import Image from '../mwx/image'
 import Event from '../mwx/event'
 // status
-import Status from './status'
+import Status from '../data/status'
 // go
 import Go from '../go'
 // set
@@ -51,7 +51,7 @@ export default {
     const vm = Stack.page()
     const data = vm.data
 
-    Status.loading(true)
+    Status.loading()
 
     co(function* c() {
       yield Dao.auLogin()
@@ -80,7 +80,7 @@ export default {
       GroupProvider.upComment()
       GroupProvider.isOpen()
 
-      Status.loading(false)
+      Status.loadingClone()
     })
   },
   bindKeyInput(e) {
@@ -173,7 +173,7 @@ export default {
       product_comment: productComment,
     }
 
-    Status.loading(true)
+    Status.loading()
     co(function* c() {
       const req = yield Comment.store(obj)
       Print.Log(req)

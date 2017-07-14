@@ -9,7 +9,7 @@ import Stack from '../mwx/stack'
 import Event from '../mwx/event'
 import GoType from '../provider/goType'
 // page status
-import Status from './status'
+import Status from '../data/status'
 // print
 // import Print from '../fn/print'
 // fn
@@ -18,13 +18,13 @@ import FnComment from '../fn/comment'
 export default {
   init() {
     const vm = Stack.page()
-    Status.loading(true)
+    Status.loading()
     co(function* c() {
       yield Dao.auLogin()
 
       const commentIndex = yield Comment.index()
 
-      Status.loading(false)
+      Status.loadingClone()
 
       const groups = FnComment.recoverGroup(commentIndex.comments)
 

@@ -4,12 +4,11 @@ import Stack from '../mwx/stack'
 export default {
   /**
    * 页面加载状态
-   * @param {any} bool
    */
-  loading(bool) {
+  loading() {
     const vm = Stack.page()
     vm.setData({
-      loading: bool,
+      loading: true,
     })
   },
   loadingClone() {

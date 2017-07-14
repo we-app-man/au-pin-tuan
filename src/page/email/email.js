@@ -1,7 +1,19 @@
+import Email from '../../controller/email'
+
 Page({
   data: {},
-  onLoad(options) {},
-  onShow() {},
+  bindEmailInput(e) {
+    Email.bindEmailInput(e)
+  },
+  submit() {
+    Email.submit()
+  },
+  onLoad(options) {
+    Email.onLoad(options)
+  },
+  onShow() {
+    Email.show()
+  },
   onReady() {},
   onHide() {},
   onUnload() {},

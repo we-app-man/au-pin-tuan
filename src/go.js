@@ -38,4 +38,10 @@ export default {
   productShow(id) {
     Go.navTo(`${Route.productShow}?id=${id}`)
   },
+  /**
+   * 提交成功后返回上一页
+   */
+  navBack(title) {
+    Go.submitNavBack(title)
+  },
 }

@@ -11,21 +11,21 @@ import MSG from '../mwx/msg'
 import Event from '../mwx/event'
 import GoType from '../provider/goType'
 // page status
-import Status from './status'
+import Status from '../data/status'
 // print
 import Print from '../fn/print'
 
 export default {
   init() {
     const vm = Stack.page()
-    Status.loading(true)
+    Status.loading()
 
     co(function* c() {
       yield Dao.auLogin()
 
       const groupIndex = yield Group.index()
 
-      Status.loading(false)
+      Status.loadingClone()
 
       const groups = groupIndex.group
 

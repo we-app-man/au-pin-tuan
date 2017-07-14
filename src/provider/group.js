@@ -137,6 +137,8 @@ export default {
       if (res) {
         Print.Log('you')
         SetGroup.isOpenAsyn(res)
+      } else {
+        Print.Log('mei you userinfo')
       }
     })
   },

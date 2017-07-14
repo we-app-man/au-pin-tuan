@@ -4,6 +4,7 @@ export default {
   description: 'description',
   imageList: 'imageList',
   image: 'image',
+  email: 'email',
   set(key, val) {
     try {
       return wx.setStorageSync(key, val)
