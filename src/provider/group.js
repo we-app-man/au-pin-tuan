@@ -4,24 +4,49 @@ import {
 } from '../libs/es6-promise'
 import regeneratorRuntime from '../libs/runtime'
 import co from '../libs/co'
-import Image from '../dao/image'
 // stack
 import Stack from '../mwx/stack'
-import WXimage from '../mwx/image'
-import Event from '../mwx/event'
 import Comment from '../dao/comment'
 import Print from '../fn/print'
 import Go from '../go'
 // set
 import SetGroup from '../set/group'
+import SetUser from '../set/user'
 // storage
 import Storage from '../util/storage'
 // doa
+import Dao from '../dao/base'
 import Group from '../dao/group'
+import Product from '../dao/product'
 import Istorage from '../mwx/storage'
-
+// filter
+import ImageFilter from '../filter/image'
+// middleware
+import GroupMiddleware from '../middleware/group'
+import Status from '../data/status'
 
 export default {
+  editInit() {
+    const vm = Stack.page()
+    const data = vm.data
+
+    co(function* c() {
+      yield Dao.auLogin()
+
+      const groupEdit = yield Group.edit(data.id)
+      const group = groupEdit.group
+      SetGroup.Group(group)
+      Print.Log(group)
+      SetUser.info()
+      SetGroup.ImageListAdd()
+      if (group.type_id !== 2) {
+        return
+      }
+
+      const products = yield Product.show(group.id)
+      SetGroup.products(products.products)
+    })
+  },
   store() {
     const vm = Stack.page()
     const data = vm.data
@@ -61,44 +86,13 @@ export default {
       }
     })
   },
-  imgUpload(e) {
-    const vm = Stack.page()
-    const imgIndex = Event.dataset(e, 'id')
-    const data = vm.data
-    const imageList = data.imageList
-    const image = data.image
-    co(function* c() {
-      const filepath = yield WXimage.chooseImage()
-
-      if (!filepath) {
-        console.log('选择图片取消')
-        return
-      }
-      console.log(filepath)
-      console.log(imgIndex)
-      imageList[imgIndex].src = filepath
-
-      vm.setData({
-        imageList,
-        imgUpload: true,
-      })
-
-      const imgPath = yield Image.store(filepath)
-
-      console.log(imgPath)
-
-      imageList[imgIndex].src = imgPath.src
-
-      image[imgIndex] = imgPath.path
-
-      vm.setData({
-        imageList,
-        image,
-        imgUpload: false,
-      })
-
-      Istorage.set(Istorage.image, image)
-      Istorage.set(Istorage.imageList, imageList)
+  update() {
+    Status.loading()
+    const obj = ImageFilter.update()
+    const req = Group.update(obj)
+    req.then(() => {
+      Status.loadingClone()
+      GroupMiddleware.submitOk(obj)
     })
   },
   /**

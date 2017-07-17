@@ -44,4 +44,22 @@ export default {
       })
     })
   },
+  delete(obj) {
+    return new Promise((resolve) => {
+      const url = `${CONFIG.ApiHost}api/image/delete?img=${obj.img}`
+
+      const resData = HTTP.post(url, obj)
+
+      resData.then((res) => {
+        console.log(res)
+        console.log('delete++')
+        resolve(JSON.parse(res))
+      })
+
+      resData.catch((err) => {
+        console.log(`delete++${err}`)
+        resolve(false)
+      })
+    })
+  },
 }

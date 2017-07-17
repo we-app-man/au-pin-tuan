@@ -19,4 +19,9 @@ export default {
       resolve(Image.destroy(obj))
     })
   },
+  delete(obj) {
+    return new Promise((resolve) => {
+      resolve(Image.delete(obj))
+    })
+  },
 }

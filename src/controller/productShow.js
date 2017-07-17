@@ -104,44 +104,6 @@ export default {
     })
     Print.Log(vm)
   },
-  /**
-   * 提交接龙
-   */
-  submit() {
-    const vm = Stack.page()
-    const comment = vm.data.comment
-    const products = vm.data.products
-    const totalPrice = vm.data.totalPrice
-    const id = vm.data.id
-
-    if (!CommentFilter.isSubmit()) {
-      return
-    }
-
-    if (!ProductMiddleware.submit()) {
-      return
-    }
-
-    const productComment = FnProduct.commentProduct(products)
-
-    const obj = {
-      comment,
-      group_id: id,
-      products,
-      total_price: totalPrice,
-      product_comment: productComment,
-    }
-
-    co(function* c() {
-      const req = yield Comment.store(obj)
-      if (!req.error) {
-        MSG.showModal('跟团成功')
-      }
-      Print.Log(req)
-
-      GroupProvider.upComment()
-    })
-  },
   formSubmit(e) {
     const vm = Stack.page()
     const comment = vm.data.comment
@@ -243,7 +205,7 @@ export default {
     const vm = Stack.page()
     const data = vm.data
     const group = data.group
-    Go.groupEdit(group.id, group.type_id)
+    Go.productEdit(group.id)
   },
   tapEmail() {
     const vm = Stack.page()

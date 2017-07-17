@@ -9,9 +9,10 @@ export default {
     let i
     for (i = 0; i < len; i += 1) {
       const item = arr[i]
-      arrNew.push(fileHost + item)
+      if (item) {
+        arrNew.push(fileHost + item)
+      }
     }
-
     return arrNew
   },
   imageList(arr) {
@@ -27,5 +28,8 @@ export default {
       arrNew.push(obj)
     }
     return arrNew
+  },
+  replacePrefix(img, id) {
+    return img.replace(`uploads/group/${id}/`, '')
   },
 }

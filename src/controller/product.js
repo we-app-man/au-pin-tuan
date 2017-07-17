@@ -9,14 +9,16 @@ import LoginProvider from '../provider/login'
 import StoragePro from '../provider/storage'
 // print
 import Print from '../fn/print'
-// set
-import SetProduct from '../set/product'
 // message
 import Message from '../message/modal'
 // envent
 import Event from '../mwx/event'
-import Istorage from '../mwx/storage'
-
+// set
+import SetGroup from '../set/group'
+import SetProduct from '../set/product'
+import ImagePro from '../provider/image'
+// middle
+import ImageMiddle from '../middleware/image'
 
 export default {
   onLoad() {
@@ -30,12 +32,7 @@ export default {
     StoragePro.description()
   },
   bindTextAreaBlur(e) {
-    const vm = Stack.page()
-    const description = Event.value(e)
-    vm.setData({
-      description,
-    })
-    Istorage.set(Istorage.description, description)
+    SetGroup.description(e)
   },
   submit() {
     if (!GroupMiddleware.submit()) {
@@ -51,7 +48,11 @@ export default {
    * @param {any} e
    */
   bindUpload(e) {
-    GroupProvider.imgUpload(e)
+    if (ImageMiddle.isUpload(e)) {
+      ImagePro.editViewImg(e)
+      return
+    }
+    ImagePro.Upload(e)
   },
   /**
    * 添加商品
@@ -79,5 +80,12 @@ export default {
   bindPorudctDel(e) {
     const index = Event.dataset(e, 'index')
     SetProduct.removeIndex(index)
+  },
+  /**
+   * 删除图片
+   * @param {any} e
+   */
+  bindImgDelete(e) {
+    ImagePro.destroy(e)
   },
 }

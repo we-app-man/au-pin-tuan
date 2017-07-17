@@ -8,12 +8,9 @@ Page({
     currencyCode: 'AUD$',
     column: '编辑团购信息，分享到群，愉快的接龙吧！',
     placeholder: '团购描述...',
+    submitName: '发起接龙',
     imageLoad: true,
     imageList: [{
-      src: '',
-    }, {
-      src: '',
-    }, {
       src: '',
     }],
   },
@@ -38,15 +35,13 @@ Page({
   tapAddProduct() {
     Product.tapAddProduct()
   },
+  bindImgDelete(e) {
+    Product.bindImgDelete(e)
+  },
   submit() {
     Product.submit()
   },
-  /**
-   * 监听用户下拉动作
-   */
-  onPullDownRefresh() {
-    wx.stopPullDownRefresh()
-  },
+  catchtap() {},
   // /**
   //  * 分享
   //  * @param {any} page

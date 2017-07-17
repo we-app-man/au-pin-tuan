@@ -4,5 +4,6 @@ export default {
   placardShow: '/page/placard/show/show',
   placardEdit: '/page/placard/edit/edit',
   productShow: '/page/product/show/show',
+  productEdit: '/page/product/edit/edit',
   email: '/page/email/email?id=',
 }

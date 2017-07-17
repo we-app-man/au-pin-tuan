@@ -2,6 +2,7 @@ import Product from '../../../controller/productShow'
 
 Page({
   data: {
+    submitName: '跟团购',
     currencyCode: 'AUD$',
   },
   onLoad(options) {

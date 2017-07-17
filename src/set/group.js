@@ -3,8 +3,10 @@ import Stack from '../mwx/stack'
 import FnImage from '../fn/image'
 import Config from '../config'
 import FnString from '../fn/string'
+import Istorage from '../mwx/storage'
 // env
 import Env from '../env'
+import EventM from '../mwx/event'
 
 export default {
   Group(data) {
@@ -46,15 +48,29 @@ export default {
     let i
     for (i = 0; i < len; i += 1) {
       const item = arr[i]
-      const obj = {
-        src: Config.FileHost + item,
+      if (item) {
+        const obj = {
+          src: Config.FileHost + item,
+          delete: true,
+        }
+        image.push(item)
+        imageList.push(obj)
       }
-      image.push(item)
-      imageList.push(obj)
     }
 
     vm.setData({
       image,
+      imageList,
+    })
+  },
+  ImageListAdd() {
+    const vm = Stack.page()
+    const imageList = vm.data.imageList
+    const obj = {
+      src: '',
+    }
+    imageList.push(obj)
+    vm.setData({
       imageList,
     })
   },
@@ -74,6 +90,20 @@ export default {
 
     vm.setData({
       switch: headId === userId,
+    })
+  },
+  description(e) {
+    const vm = Stack.page()
+    const description = EventM.value(e)
+    vm.setData({
+      description,
+    })
+    Istorage.set(Istorage.description, description)
+  },
+  products(products) {
+    const vm = Stack.page()
+    vm.setData({
+      products,
     })
   },
 }

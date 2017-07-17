@@ -6,7 +6,6 @@ import CONFIG from '../config'
 
 import Storage from '../util/storage'
 
-
 export default {
   /**
    * 我的信息

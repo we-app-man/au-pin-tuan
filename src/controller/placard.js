@@ -8,6 +8,11 @@ import LoginProvider from '../provider/login'
 import StoragePro from '../provider/storage'
 import Istorage from '../mwx/storage'
 import Event from '../mwx/event'
+import ImagePro from '../provider/image'
+// set
+import SetGroup from '../set/group'
+// middle
+import ImageMiddle from '../middleware/image'
 
 
 export default {
@@ -22,12 +27,7 @@ export default {
     StoragePro.description()
   },
   bindTextAreaBlur(e) {
-    const vm = Stack.page()
-    const description = Event.value(e)
-    vm.setData({
-      description,
-    })
-    Istorage.set(Istorage.description, description)
+    SetGroup.description(e)
   },
   submit() {
     if (!GroupMiddleware.submit()) {
@@ -40,6 +40,17 @@ export default {
    * @param {any} e
    */
   bindUpload(e) {
-    GroupProvider.imgUpload(e)
+    if (ImageMiddle.isUpload(e)) {
+      ImagePro.editViewImg(e)
+      return
+    }
+    ImagePro.Upload(e)
+  },
+  /**
+   * 删除图片
+   * @param {any} e
+   */
+  bindImgDelete(e) {
+    ImagePro.destroy(e)
   },
 }

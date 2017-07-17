@@ -1,7 +1,10 @@
 import Placard from '../../../controller/placardShow'
 
 Page({
-  data: {},
+  data: {
+    submitName: '接龙',
+    placeholder: '我要上头条',
+  },
   onLoad(options) {
     Placard.onLoad(options)
   },

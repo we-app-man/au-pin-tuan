@@ -4,7 +4,7 @@
     商品名称:
   </view>
   <view class="flex_2">
-    <input bindinput="bindProduct" confirm-type="done" data-name="name" data-index="{{index}}" value="{{item.name}}" class="font_14" placeholder="商品描述，单位信息" />
+    <input disabled="{{item.id}}"  bindinput="bindProduct" confirm-type="done" data-name="name" data-index="{{index}}" value="{{item.name}}" class="height_30 line-height_30 font_14" placeholder="商品描述，单位信息" />
   </view>
 </view>
 <!--商品名称 end-->
@@ -15,7 +15,7 @@
     价格:AUD$
   </view>
   <view class="flex_2">
-    <input bindinput="bindProduct" type="digit" data-name="price" data-index="{{index}}" value="{{item.price}}" placeholder="" />
+    <input disabled="{{item.id}}" bindinput="bindProduct" type="digit" data-name="price" data-index="{{index}}" value="{{item.price}}" class="height_30 line-height_30" />
   </view>
 </view>
 <!--商品价格 end-->
@@ -29,6 +29,6 @@
   </view>
 </view>-->
 <!--商品数量 end-->
-<view class="padding-top_10 text-right">
+<view wx:if="{{!item.id}}" class="padding-top_10 text-right">
   <button bindtap="bindPorudctDel" data-index="{{index}}" type="warn" size="mini" hover-class="button-hover">删除此商品</button>
 </view>

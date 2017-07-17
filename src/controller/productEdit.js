@@ -2,19 +2,27 @@
 import Stack from '../mwx/stack'
 // set
 import SetGroup from '../set/group'
+import SetProduct from '../set/product'
 // provider
 import ImagePro from '../provider/image'
 import GroupPro from '../provider/group'
+// print
+import Print from '../fn/print'
 // middleware
 import ImageMiddle from '../middleware/image'
 import GroupMiddleware from '../middleware/group'
+import ProductMiddleware from '../middleware/product'
+// message
+import Message from '../message/modal'
+// event
+import EventM from '../mwx/event'
 
 export default {
   onLoad(ops) {
     const vm = Stack.page()
     vm.setData({
       id: ops.id,
-      type_id: 1,
+      type_id: 2,
     })
   },
   init() {
@@ -46,5 +54,30 @@ export default {
    */
   bindImgDelete(e) {
     ImagePro.destroy(e)
+  },
+  /**
+   * 添加商品
+   */
+  tapAddProduct() {
+    if (!ProductMiddleware.add()) {
+      Message.productInput()
+      return
+    }
+    SetProduct.push()
+    Print.Log('ok')
+  },
+  bindProduct(e) {
+    const vm = Stack.page()
+    const val = EventM.value(e)
+    const index = EventM.dataset(e, 'index')
+    const name = EventM.dataset(e, 'name')
+    const products = vm.data.products
+    products[index][name] = val
+
+    SetProduct.products(products)
+  },
+  bindPorudctDel(e) {
+    const index = EventM.dataset(e, 'index')
+    SetProduct.removeIndex(index)
   },
 }

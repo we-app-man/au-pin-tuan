@@ -39,6 +39,13 @@ export default {
     Go.navTo(`${Route.productShow}?id=${id}`)
   },
   /**
+   * 编辑团购详细页
+   * @param {any} id
+   */
+  productEdit(id) {
+    Go.navTo(`${Route.productEdit}?id=${id}`)
+  },
+  /**
    * 打开导出
    * @param {any} id
    */
