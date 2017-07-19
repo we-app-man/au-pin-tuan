@@ -118,9 +118,9 @@ export default {
       return
     }
 
-    if (!ProductMiddleware.submit()) {
-      return
-    }
+    // if (!ProductMiddleware.submit()) {
+    //   return
+    // }
 
     const productComment = FnProduct.commentProduct(products)
 

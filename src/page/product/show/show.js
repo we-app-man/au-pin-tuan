@@ -59,9 +59,7 @@ Page({
   formSubmit(e) {
     Product.formSubmit(e)
   },
-  submit() {
-    Product.submit()
-  },
+  submit() {},
   /**
    * 监听用户下拉动作
    */

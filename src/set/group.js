@@ -29,7 +29,14 @@ export default {
       descBtn = true
     }
 
-    const codeSrc = Env.codeApi + group.id
+    const qrCodePath = group.qr_code_path || false
+
+    let codeSrc = Env.codeApi + group.id
+
+    if (qrCodePath) {
+      codeSrc = Env.storagePath + qrCodePath
+    }
+
 
     vm.setData({
       group,

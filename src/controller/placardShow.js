@@ -94,10 +94,12 @@ export default {
       group_id: id,
     }
 
+    Status.loading()
+
     co(function* c() {
       const req = yield Comment.store(obj)
       Print.Log(req)
-
+      Status.loadingClone()
       GroupProvider.upComment()
     })
   },
