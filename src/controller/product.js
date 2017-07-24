@@ -34,6 +34,9 @@ export default {
   bindTextAreaBlur(e) {
     SetGroup.description(e)
   },
+  bindTitle(e) {
+    SetGroup.title(e)
+  },
   submit() {
     if (!GroupMiddleware.submit()) {
       return

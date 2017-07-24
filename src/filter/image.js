@@ -2,9 +2,10 @@
 import Stack from '../mwx/stack'
 
 export default {
-  update() {
+  update () {
     const vm = Stack.page()
     const data = vm.data
+    const title = data.title
     const description = data.description
     const products = data.products
     const id = data.group.id
@@ -28,12 +29,13 @@ export default {
 
     const obj = {
       id,
+      title,
       description,
       products,
       image: arr,
-      type_id: typeId,
+      type_id: typeId
     }
 
     return obj
-  },
+  }
 }

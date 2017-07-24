@@ -7,42 +7,46 @@ Page({
     image: [],
     currencyCode: 'AUD$',
     column: '编辑团购信息，分享到群，愉快的接龙吧！',
+    placeholderTitle: '一句话标题',
     placeholder: '团购描述...',
     submitName: '更新接龙',
     imageLoad: true,
     imageList: [{
-      src: '',
-    }],
+      src: ''
+    }]
   },
-  onLoad(options) {
+  onLoad (options) {
     Product.onLoad(options)
   },
-  onShow() {
+  onShow () {
     Product.init()
   },
-  bindTextAreaBlur(e) {
+  bindTextAreaBlur (e) {
     Product.bindTextAreaBlur(e)
   },
-  bindUpload(e) {
+  bindTitle (e) {
+    Product.bindTitle(e)
+  },
+  bindUpload (e) {
     Product.bindUpload(e)
   },
-  bindProduct(e) {
+  bindProduct (e) {
     Product.bindProduct(e)
   },
-  bindPorudctDel(e) {
+  bindPorudctDel (e) {
     Product.bindPorudctDel(e)
   },
-  tapAddProduct() {
+  tapAddProduct () {
     Product.tapAddProduct()
   },
-  bindImgDelete(e) {
+  bindImgDelete (e) {
     Product.bindImgDelete(e)
   },
-  submit() {
+  submit () {
     Product.submit()
   },
-  catchtap() {},
-  onReady() {},
-  onHide() {},
-  onUnload() {},
+  catchtap () {},
+  onReady () {},
+  onHide () {},
+  onUnload () {}
 })

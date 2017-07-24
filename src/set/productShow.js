@@ -2,18 +2,27 @@
 import Stack from '../mwx/stack'
 // fn
 import FnProduct from '../fn/product'
+import FnOrder from '../fn/order'
 import FnString from '../fn/string'
 
 export default {
   products(data) {
     const vm = Stack.page()
     const len = data.length
-    const products = data
+      // const products = data
     let i
-
+    const products = []
     for (i = 0; i < len; i += 1) {
-      const item = products[i]
-      item.amount = 0
+      const item = data[i]
+      const newItem = {
+        product_id: item.id,
+        product_quantity: item.quantity,
+        product_order_count: FnOrder.orderCount(item.product_order),
+        quantity: 0,
+        name: item.name,
+        price: item.price,
+      }
+      products.push(newItem)
     }
 
     vm.setData({
@@ -23,18 +32,25 @@ export default {
   productsIndex(bool, index) {
     const vm = Stack.page()
     const products = vm.data.products
-    let amount = products[index].amount
+    const product = products[index]
+    let quantity = products[index].quantity
     if (bool) {
-      amount += 1
+      quantity += 1
     } else {
-      amount -= 1
+      quantity -= 1
     }
 
-    if (amount < 0) {
-      amount = 0
+    if (quantity < 0) {
+      quantity = 0
     }
 
-    products[index].amount = amount
+    const surplus = product.product_quantity - product.product_order_count
+
+    if (surplus < quantity && product.product_quantity) {
+      return
+    }
+
+    products[index].quantity = quantity
 
     let totalPrice = FnProduct.totalPrice(products)
     totalPrice = FnString.toDecimal2(totalPrice)

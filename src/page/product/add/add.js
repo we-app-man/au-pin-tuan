@@ -7,6 +7,7 @@ Page({
     image: [],
     currencyCode: 'AUD$',
     column: '编辑团购信息，分享到群，愉快的接龙吧！',
+    placeholderTitle: '一句话标题',
     placeholder: '团购描述...',
     submitName: '发起接龙',
     imageLoad: true,
@@ -22,6 +23,9 @@ Page({
   },
   bindTextAreaBlur(e) {
     Product.bindTextAreaBlur(e)
+  },
+  bindTitle(e) {
+    Product.bindTitle(e)
   },
   bindUpload(e) {
     Product.bindUpload(e)

@@ -1,6 +1,7 @@
 import Print from '../fn/print'
 
 export default {
+  title: 'title',
   description: 'description',
   imageList: 'imageList',
   image: 'image',

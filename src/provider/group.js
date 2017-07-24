@@ -50,6 +50,7 @@ export default {
   store() {
     const vm = Stack.page()
     const data = vm.data
+    const title = data.title
     const description = data.description
     const products = data.products
     const typeId = data.type_id
@@ -64,6 +65,7 @@ export default {
     const obj = {
       description,
       image,
+      title,
       products,
       type_id: typeId,
     }

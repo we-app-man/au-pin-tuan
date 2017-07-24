@@ -12,6 +12,7 @@ export default {
   Group(data) {
     const vm = Stack.page()
     const group = data
+    const title = group.title
     const description = group.description
     let desc = group.description
     const that = this
@@ -40,6 +41,7 @@ export default {
 
     vm.setData({
       group,
+      title,
       description,
       descMore,
       descBtn,
@@ -106,6 +108,14 @@ export default {
       description,
     })
     Istorage.set(Istorage.description, description)
+  },
+  title(e) {
+    const vm = Stack.page()
+    const title = EventM.value(e)
+    vm.setData({
+      title,
+    })
+    Istorage.set(Istorage.title, title)
   },
   products(products) {
     const vm = Stack.page()

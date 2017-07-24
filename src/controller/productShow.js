@@ -107,7 +107,7 @@ export default {
   formSubmit(e) {
     const vm = Stack.page()
     const comment = vm.data.comment
-    const products = vm.data.products
+    let products = vm.data.products
     const totalPrice = vm.data.totalPrice
     const phone = vm.data.phone
     const name = vm.data.name
@@ -118,11 +118,12 @@ export default {
       return
     }
 
-    // if (!ProductMiddleware.submit()) {
-    //   return
-    // }
+    if (!ProductMiddleware.quantityCount()) {
+      return
+    }
 
     const productComment = FnProduct.commentProduct(products)
+    products = FnProduct.getSubProducts(products)
 
     const obj = {
       comment,
