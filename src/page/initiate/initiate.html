@@ -1,6 +1,9 @@
 <view class="padding-x_10 padding-top_10">
   下面列表点击即可到详情页面哦
 </view>
+
+<include src="../template/loading/main.html" />
+
 <block wx:for="{{groups}}" wx:key="index">
   <view class="bg-color-fff margin-top_10 padding_10" bindtap="tapDetail" data-id="{{item.id}}" data-type="{{item.type_id}}">
     <view class="font_16 margin-bottom_5">

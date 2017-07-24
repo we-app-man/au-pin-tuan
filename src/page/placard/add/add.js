@@ -7,6 +7,7 @@ Page({
     image: [],
     column: '编辑报名信息，分享到群，愉快的接龙吧！',
     placeholder: '1月12日， Opera House，聚会活动….',
+    placeholderTitle: '一句话标题',
     submitName: '发起接龙',
     imageLoad: true,
     imageList: [{
@@ -18,6 +19,9 @@ Page({
   },
   onShow() {
     Placard.init()
+  },
+  bindTitle(e) {
+    Placard.bindTitle(e)
   },
   bindTextAreaBlur(e) {
     Placard.bindTextAreaBlur(e)

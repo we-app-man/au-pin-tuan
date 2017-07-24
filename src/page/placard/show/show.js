@@ -45,6 +45,7 @@ Page({
    * 监听用户下拉动作
    */
   onPullDownRefresh() {
+    Placard.init()
     wx.stopPullDownRefresh()
   },
   /**

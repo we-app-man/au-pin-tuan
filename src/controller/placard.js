@@ -26,6 +26,9 @@ export default {
     LoginProvider.initLoginUser()
     StoragePro.description()
   },
+  bindTitle(e) {
+    SetGroup.title(e)
+  },
   bindTextAreaBlur(e) {
     SetGroup.description(e)
   },

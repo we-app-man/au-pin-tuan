@@ -20,6 +20,9 @@ export default {
   init() {
     GroupPro.editInit()
   },
+  bindTitle(e) {
+    SetGroup.title(e)
+  },
   bindTextAreaBlur(e) {
     SetGroup.description(e)
   },

@@ -15,38 +15,38 @@ Page({
       src: ''
     }]
   },
-  onLoad (options) {
+  onLoad(options) {
     Product.onLoad(options)
   },
-  onShow () {
+  onShow() {
     Product.init()
   },
-  bindTextAreaBlur (e) {
+  bindTextAreaBlur(e) {
     Product.bindTextAreaBlur(e)
   },
-  bindTitle (e) {
+  bindTitle(e) {
     Product.bindTitle(e)
   },
-  bindUpload (e) {
+  bindUpload(e) {
     Product.bindUpload(e)
   },
-  bindProduct (e) {
+  bindProduct(e) {
     Product.bindProduct(e)
   },
-  bindPorudctDel (e) {
+  bindPorudctDel(e) {
     Product.bindPorudctDel(e)
   },
-  tapAddProduct () {
+  tapAddProduct() {
     Product.tapAddProduct()
   },
-  bindImgDelete (e) {
+  bindImgDelete(e) {
     Product.bindImgDelete(e)
   },
-  submit () {
+  submit() {
     Product.submit()
   },
-  catchtap () {},
-  onReady () {},
-  onHide () {},
-  onUnload () {}
+  catchtap() {},
+  onReady() {},
+  onHide() {},
+  onUnload() {},
 })

@@ -19,7 +19,7 @@
   <view class="flex-box overflow-y">
     <block wx:for="{{group.image}}" wx:key="{{index}}">
       <view class="thumb-box" bindtap="tapImage" data-index="{{index}}">
-        <image class="thumb-img" mode="aspectFill" src="{{item}}"></image>
+        <image class="thumb-img" mode="aspectFill" src="{{item}}?width=100"></image>
       </view>
     </block>
   </view>
