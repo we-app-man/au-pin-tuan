@@ -14,6 +14,8 @@ import GoType from '../provider/goType'
 import Status from '../data/status'
 // print
 import Print from '../fn/print'
+// fn
+import GroupFn from '../fn/group'
 
 export default {
   init() {
@@ -28,6 +30,8 @@ export default {
       Status.loadingClone()
 
       const groups = groupIndex.group
+
+      GroupFn.List(groups)
 
       vm.setData({
         groups,

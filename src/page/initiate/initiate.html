@@ -10,7 +10,7 @@
       {{item.description}}
     </view>
     <view class="font_13 color-ddd margin-bottom_5">
-      发起时间: {{item.created_at}}
+      发起时间: {{item.time ? item.time : item.created_at}}
     </view>
     <!--接龙状态-->
     <view class="flex-box">

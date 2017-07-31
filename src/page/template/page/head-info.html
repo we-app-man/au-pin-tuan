@@ -13,7 +13,7 @@
       {{group.alias}}
     </view>
     <view class="height_27 color-ddd flex-box align-item-end font_12">
-      发起时间: {{group.created_at}}
+      发起时间: {{group.time ? group.time : group.created_at}}
     </view>
   </view>
   <!--团长信息end-->

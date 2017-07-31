@@ -7,6 +7,7 @@ import Istorage from '../mwx/storage'
 // env
 import Env from '../env'
 import EventM from '../mwx/event'
+import DateTool from '../util/date'
 
 export default {
   Group(data) {
@@ -38,6 +39,7 @@ export default {
       codeSrc = Env.storagePath + qrCodePath
     }
 
+    group.time = DateTool.format(group.created_at)
 
     vm.setData({
       group,

@@ -24,6 +24,8 @@ import ImageFilter from '../filter/image'
 // middleware
 import GroupMiddleware from '../middleware/group'
 import Status from '../data/status'
+// fn
+import GroupFn from '../fn/group'
 
 export default {
   editInit() {
@@ -114,11 +116,11 @@ export default {
   upComment() {
     const vm = Stack.page()
     const data = vm.data
-
     const commentShow = Comment.show(data.id)
 
     commentShow.then((res) => {
       const commentsList = res.comments
+      GroupFn.List(commentsList)
       vm.setData({
         commentsList,
       })

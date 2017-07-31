@@ -21,7 +21,7 @@
     <!--订单时间-->
     <view class="font_12 text-right">
       <view class="color-ddd ">
-        {{item.created_at}}
+        {{item.time ? item.time : item.created_at}}
       </view>
       <block wx:if="{{switch}}">
         <view class="padding-top_10">
