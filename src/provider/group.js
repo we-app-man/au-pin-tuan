@@ -18,6 +18,7 @@ import Storage from '../util/storage'
 import Dao from '../dao/base'
 import Group from '../dao/group'
 import Product from '../dao/product'
+import User from '../dao/user'
 import Istorage from '../mwx/storage'
 // filter
 import ImageFilter from '../filter/image'
@@ -138,6 +139,18 @@ export default {
       } else {
         Print.Log('mei you userinfo')
       }
+    })
+  },
+  userInfo() {
+    const vm = Stack.page()
+    const user = User.me()
+
+    user.then((res) => {
+      Print.Log(res)
+      const userInfo = res
+      vm.setData({
+        userInfo,
+      })
     })
   },
 }

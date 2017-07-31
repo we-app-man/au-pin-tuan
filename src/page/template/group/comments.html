@@ -14,7 +14,7 @@
     <!--订单信息-->
     <view class="flex-2 padding-left_10">
       <view class="font_12 padding-bottom_5">{{item.alias}}</view>
-      <text>{{item.comment}}</text>
+      <text wx:if="{{item.comment}}">{{item.comment}}</text>
       <text wx:if="{{item.product_comment}}">\n{{item.product_comment}}</text>
     </view>
     <!--订单信息 end-->

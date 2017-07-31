@@ -3,6 +3,8 @@ import Product from '../../../controller/productShow'
 Page({
   data: {
     submitName: '跟团购',
+    comment: '',
+    commentPlaceholder: '还有什么要说的可以告诉我哦',
     currencyCode: 'AUD$',
   },
   onLoad(options) {

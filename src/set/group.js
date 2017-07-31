@@ -87,9 +87,11 @@ export default {
   },
   comment(comment) {
     const vm = Stack.page()
-    vm.setData({
-      comment: !comment ? '+1 😂 ' : comment.comment,
-    })
+    if (comment) {
+      vm.setData({
+        comment: comment.comment,
+      })
+    }
   },
   isOpenAsyn(userInfo) {
     const vm = Stack.page()

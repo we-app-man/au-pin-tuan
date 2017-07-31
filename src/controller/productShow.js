@@ -79,6 +79,7 @@ export default {
 
       GroupProvider.upComment()
       GroupProvider.isOpen()
+      GroupProvider.userInfo()
 
       Status.loadingClone()
     })

@@ -3,6 +3,8 @@ import Placard from '../../../controller/placardShow'
 Page({
   data: {
     submitName: '接龙',
+    comment: '+1 😊',
+    commentPlaceholder: '还有什么要说的可以告诉我哦',
     placeholder: '我要上头条',
   },
   onLoad(options) {
