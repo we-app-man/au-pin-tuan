@@ -25,6 +25,7 @@ import SetComment from '../set/comment'
 import Print from '../fn/print'
 // provider
 import GroupProvider from '../provider/group'
+import PreviewPro from '../provider/preview'
 // filter
 import CommentFilter from '../filter/comment'
 
@@ -116,9 +117,7 @@ export default {
     Image.previewImage(codeSrc, [codeSrc])
   },
   tabAvatar() {
-    const vm = Stack.page()
-    const avatar = vm.data.group.avatar
-    Image.previewImage(avatar, [avatar])
+    PreviewPro.avatar()
   },
   /**
    * 修改团状态 open

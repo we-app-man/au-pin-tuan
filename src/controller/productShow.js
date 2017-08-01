@@ -29,6 +29,7 @@ import FnProduct from '../fn/product'
 import Print from '../fn/print'
 // provider
 import GroupProvider from '../provider/group'
+import PreviewPro from '../provider/preview'
 // filter
 import CommentFilter from '../filter/comment'
 // middleware
@@ -159,9 +160,7 @@ export default {
     Image.previewImage(codeSrc, [codeSrc])
   },
   tabAvatar() {
-    const vm = Stack.page()
-    const avatar = vm.data.group.avatar
-    Image.previewImage(avatar, [avatar])
+    PreviewPro.avatar()
   },
   tabSecrecy() {
     const vm = Stack.page()

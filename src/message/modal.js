@@ -8,6 +8,10 @@ export default {
     const content = '已截止啦'
     Msg.showModal(content)
   },
+  commentNull() {
+    const content = '已截止啦'
+    Msg.showModal(content)
+  },
   productInput() {
     const content = '商品信息有没有输入的哦'
     Msg.showModal(content)
