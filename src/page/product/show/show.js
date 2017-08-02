@@ -70,7 +70,7 @@ Page({
    */
   onShareAppMessage() {
     const data = this.data
-    const title = '澳洲群一键接龙'
+    const title = data.title || '澳洲群一键接龙'
     const desc = `${data.group.description}..`
     return {
       'title': title,
