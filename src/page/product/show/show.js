@@ -65,7 +65,6 @@ Page({
   },
   /**
    * 分享
-   * @param {any} page
    * @returns
    */
   onShareAppMessage() {
