@@ -49,6 +49,10 @@ export default {
       descBtn,
       desc,
       codeSrc,
+      required_u_name: group.required_u_name || 0,
+      required_u_phone: group.required_u_phone || 0,
+      required_u_wechat: group.required_u_wechat || 0,
+      required_u_address: group.required_u_address || 0,
     })
   },
   ImageList(arr) {

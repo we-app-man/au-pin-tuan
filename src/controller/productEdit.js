@@ -3,6 +3,7 @@ import Stack from '../mwx/stack'
 // set
 import SetGroup from '../set/group'
 import SetProduct from '../set/product'
+import SetRequired from '../set/required'
 // provider
 import ImagePro from '../provider/image'
 import GroupPro from '../provider/group'
@@ -18,23 +19,23 @@ import Message from '../message/modal'
 import EventM from '../mwx/event'
 
 export default {
-  onLoad (ops) {
+  onLoad(ops) {
     const vm = Stack.page()
     vm.setData({
       id: ops.id,
-      type_id: 2
+      type_id: 2,
     })
   },
-  init () {
+  init() {
     GroupPro.editInit()
   },
-  bindTextAreaBlur (e) {
+  bindTextAreaBlur(e) {
     SetGroup.description(e)
   },
-  bindTitle (e) {
+  bindTitle(e) {
     SetGroup.title(e)
   },
-  submit () {
+  submit() {
     if (!GroupMiddleware.submit()) {
       return
     }
@@ -44,7 +45,7 @@ export default {
    * 点击选择图片上传
    * @param {any} e
    */
-  bindUpload (e) {
+  bindUpload(e) {
     if (ImageMiddle.isUpload(e)) {
       ImagePro.editViewImg(e)
       return
@@ -55,13 +56,13 @@ export default {
    * 删除图片
    * @param {any} e
    */
-  bindImgDelete (e) {
+  bindImgDelete(e) {
     ImagePro.destroy(e)
   },
   /**
    * 添加商品
    */
-  tapAddProduct () {
+  tapAddProduct() {
     if (!ProductMiddleware.add()) {
       Message.productInput()
       return
@@ -69,7 +70,7 @@ export default {
     SetProduct.push()
     Print.Log('ok')
   },
-  bindProduct (e) {
+  bindProduct(e) {
     const vm = Stack.page()
     const val = EventM.value(e)
     const index = EventM.dataset(e, 'index')
@@ -79,8 +80,11 @@ export default {
 
     SetProduct.products(products)
   },
-  bindPorudctDel (e) {
+  bindPorudctDel(e) {
     const index = EventM.dataset(e, 'index')
     SetProduct.removeIndex(index)
-  }
+  },
+  switch1Change(e) {
+    SetRequired.u(e)
+  },
 }

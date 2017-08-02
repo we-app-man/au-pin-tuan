@@ -16,6 +16,7 @@ import Event from '../mwx/event'
 // set
 import SetGroup from '../set/group'
 import SetProduct from '../set/product'
+import SetRequired from '../set/required'
 import ImagePro from '../provider/image'
 // middle
 import ImageMiddle from '../middleware/image'
@@ -90,5 +91,8 @@ export default {
    */
   bindImgDelete(e) {
     ImagePro.destroy(e)
+  },
+  switch1Change(e) {
+    SetRequired.u(e)
   },
 }

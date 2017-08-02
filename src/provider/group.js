@@ -71,6 +71,10 @@ export default {
       title,
       products,
       type_id: typeId,
+      required_u_name: data.required_u_name || 0,
+      required_u_phone: data.required_u_phone || 0,
+      required_u_wechat: data.required_u_wechat || 0,
+      required_u_address: data.required_u_address || 0,
     }
 
     const req = Group.store(obj)
