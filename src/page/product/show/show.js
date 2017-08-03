@@ -22,6 +22,12 @@ Page({
   bindKeyInputName(e) {
     Product.bindKeyInputName(e)
   },
+  bindKeyInputWechat(e) {
+    Product.bindKeyInputWechat(e)
+  },
+  bindKeyInputAddress(e) {
+    Product.bindKeyInputAddress(e)
+  },
   tapOpen() {
     Product.tapOpen()
   },

@@ -106,6 +106,20 @@ export default {
     })
     Print.Log(vm)
   },
+  bindKeyInputWechat(e) {
+    const vm = Stack.page()
+    vm.setData({
+      wechat: Event.value(e),
+    })
+    Print.Log(vm)
+  },
+  bindKeyInputAddress(e) {
+    const vm = Stack.page()
+    vm.setData({
+      address: Event.value(e),
+    })
+    Print.Log(vm)
+  },
   formSubmit(e) {
     const vm = Stack.page()
     const comment = vm.data.comment
@@ -113,10 +127,16 @@ export default {
     const totalPrice = vm.data.totalPrice
     const phone = vm.data.phone
     const name = vm.data.name
+    const wechat = vm.data.wechat
+    const address = vm.data.address
     const formId = Event.formId(e)
     const id = vm.data.id
 
     if (!CommentFilter.isSubmit()) {
+      return
+    }
+
+    if (!ProductMiddleware.submit()) {
       return
     }
 
@@ -129,12 +149,14 @@ export default {
 
     const obj = {
       comment,
-      phone,
-      name,
-      group_id: id,
       products,
       total_price: totalPrice,
       form_id: formId,
+      u_phone: phone,
+      u_name: name,
+      u_wechat: wechat,
+      u_address: address,
+      group_id: id,
       product_comment: productComment,
     }
 

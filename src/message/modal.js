@@ -36,4 +36,12 @@ export default {
     const content = '怎么称呼您呢,输入您的姓名吧'
     Msg.showModal(content)
   },
+  wechatNot() {
+    const content = '填写微信号 方便跟团长沟通'
+    Msg.showModal(content)
+  },
+  addressNot() {
+    const content = '填写收货地址,才可以收到宝贝哦'
+    Msg.showModal(content)
+  },
 }

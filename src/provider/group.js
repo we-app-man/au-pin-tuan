@@ -154,6 +154,10 @@ export default {
       const userInfo = res
       vm.setData({
         userInfo,
+        name: userInfo.u_name || '',
+        phone: userInfo.u_phone || '',
+        wechat: userInfo.u_wechat || '',
+        address: userInfo.u_address || '',
       })
     })
   },
