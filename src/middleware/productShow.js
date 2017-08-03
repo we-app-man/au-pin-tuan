@@ -5,7 +5,8 @@ export default {
   submit() {
     const vm = Stack.page()
     const data = vm.data
-      // const totalPrice = data.totalPrice || 0
+
+    // const totalPrice = data.totalPrice || 0
     const phone = data.phone || 0
     const name = data.name || 0
     const wechat = data.wechat || 0
