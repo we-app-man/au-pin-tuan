@@ -45,7 +45,7 @@ export default {
           })
         },
         fail(err) {
-          console.warn('err 拒绝了授权')
+          Print.Warn('err 拒绝了授权')
           reject(err)
         },
       })
