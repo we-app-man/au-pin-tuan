@@ -2,6 +2,7 @@
 import Stack from '../mwx/stack'
 // image
 import Image from '../mwx/image'
+import Print from '../fn/print'
 
 export default {
   /**
@@ -9,8 +10,17 @@ export default {
    */
   avatar() {
     const vm = Stack.page()
-    
-    const avatar = vm.data.group.avatar
-    Image.previewImage(avatar, [avatar])
+
+    let avatar
+
+    try {
+      avatar = !vm.data.group.avatar
+    } catch (error) {
+      Print.Error(error)
+      return
+    }
+    if (avatar) {
+      Image.previewImage(avatar, [avatar])
+    }
   },
 }
