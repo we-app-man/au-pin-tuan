@@ -6,6 +6,7 @@ import {
   Promise,
 } from '../libs/es6-promise'
 import Message from '../message/modal'
+import Print from '../fn/print'
 
 export default {
   /**
@@ -18,6 +19,7 @@ export default {
       wx.login({
         success(response) {
           const code = response.code
+          Print.Log(response)
           wx.getUserInfo({
             success(resp) {
               const obj = {
