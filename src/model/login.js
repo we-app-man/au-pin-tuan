@@ -34,7 +34,7 @@ export default {
               if (wx.openSetting) {
                 wx.openSetting({
                   success: (res) => {
-                    console.log(res)
+                    Print.Log(res)
                   },
                 })
               } else {
