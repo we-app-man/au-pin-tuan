@@ -76,7 +76,7 @@ Page({
   onShareAppMessage() {
     const data = this.data
     const title = data.title || '澳洲群一键接龙'
-    const desc = `${data.group.description}..`
+    const desc = data.group.description || ''
     return {
       'title': title,
       'desc': desc,
