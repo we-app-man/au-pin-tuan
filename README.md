@@ -1,3 +1,6 @@
+
+[![Greenkeeper badge](https://badges.greenkeeper.io/zanjs/au-pin-tuan-wx.svg)](https://greenkeeper.io/)
+
 微信小程序模板
 
 
